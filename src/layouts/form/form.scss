@@ -1,0 +1,10 @@
+@import "scss/mixins";
+
+.form-container {
+  @include shadow-box;
+
+  background: #fff;
+  border-radius: 12px;
+  width: calc(340px - (30px*2));
+  padding: 30px;
+}
