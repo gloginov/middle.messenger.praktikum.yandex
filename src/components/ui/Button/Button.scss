@@ -1,0 +1,77 @@
+.custom-button {
+  outline: none;
+  box-shadow: none;
+  border: none;
+  text-decoration: none;
+  padding: 0;
+
+  display: inline-block;
+  box-sizing: border-box;
+  min-height: 37px;
+  line-height: 37px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &__text {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: inherit;
+    text-align: center;
+    color: var(--color-white);
+    display: block;
+  }
+
+  // effects
+  &:hover {
+    opacity: .8;
+    transition: opacity .1s ease-in-out;
+  }
+  // views
+  &_primary {
+    background-color: var(--color-blue);
+  }
+
+  &_secondary {
+    background-color: var(--color-gray);
+  }
+
+  &_clear {
+    background-color: transparent;
+
+    .custom-button__text {
+      color: var(--color-blue);
+    }
+  }
+
+  &_ghost {
+    background-color: var(--color-light-gray);
+  }
+  // forms
+  &_round {
+    border-radius: 50%;
+  }
+
+  &_brick {
+    border-radius: 0;
+  }
+
+  // widths "default", "full"
+  &_full {
+    width: 100%;
+  }
+  // sizes "small", "medium", "large"
+  &_small {
+
+    .custom-button__text {
+      font-size: 11px;
+    }
+  }
+
+  &_medium {
+
+    .custom-button__text {
+      font-size: 13px;
+    }
+  }
+}

@@ -1,9 +1,6 @@
-.form {
+.form__form {
 
-  &__title {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-
+  &_login {
+    min-height: 410px;
   }
 }

@@ -1,7 +1,13 @@
+<form class="form__form form__form_login">
+    <div class="form__content">
+        {{> Text style="font-size:20px;font-weight:500;color:var(--color-black);" text="Вход" className="form__title" }}
 
-<form class="form">
-    {{> Text style="font-size: 20px; font-weight: 500; color: var(--color-black);" text="Вход" className="form__title" }}
+        {{> TextField label="Логин" type="text" errorMessage="Неверный логин" value="ivanivanov" name="login"}}
+        {{> TextField label="Пароль" type="password" errorMessage="Обязательно для заполнения" name="password"}}
+    </div>
 
-    {{> TextField label="Логин" type="text" errorMessage="Неверный логин" value="ivanivanov"}}
-    {{> TextField label="Пароль" type="password" errorMessage="Неверный пароль"}}
+    <div class="form__footer">
+        {{> Button text="Войти" view="primary" width="full" data-page="chats"}}
+        {{> Button text="Нет аккаунта?" view="clear" width="full" size="small"  data-page="registration"}}
+    </div>
 </form>

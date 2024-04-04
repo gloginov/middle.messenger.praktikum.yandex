@@ -1,0 +1,46 @@
+{{# if href}}
+<a href="{{ href }}" target="{{ target }}"
+    class="
+        custom-button
+        custom-button_{{ view }}
+        custom-button_{{ form }}
+        custom-button_{{ width }}
+        custom-button_{{# if size}}{{ size }}{{else}}default{{/if}}
+    "
+    style={{ style }}
+    >
+    {{# if iconLeft}}{{iconLeft}}{{/if}}
+    {{# if text}}<span class="custom-button__text">{{ text }}</span>{{/if}}
+    {{# if iconRigth}}{{iconRigth}}{{/if}}
+</a>
+{{else if data-page}}
+    <a href="#"
+       class="
+        custom-button
+        custom-button_{{ view }}
+        custom-button_{{ form }}
+        custom-button_{{ width }}
+        custom-button_{{# if size}}{{ size }}{{else}}default{{/if}}
+    "
+       style={{ style }}
+    >
+        {{# if iconLeft}}{{iconLeft}}{{/if}}
+        {{# if text}}<span data-page="{{ data-page }}" class="custom-button__text">{{ text }}</span>{{/if}}
+        {{# if iconRigth}}{{iconRigth}}{{/if}}
+    </a>
+{{else}}
+    <button
+            class="
+        custom-button
+        custom-button_{{ view }}
+        custom-button_{{ form }}
+        custom-button_{{ width }}
+        custom-button_{{# if size}}{{ size }}{{else}}default{{/if}}
+    "
+            style={{ style }}
+    >
+        {{# if iconLeft}}{{iconLeft}}{{/if}}
+        {{# if text}}<span class="custom-button__text">{{ text }}</span>{{/if}}
+        {{# if iconRigth}}{{iconRigth}}{{/if}}
+    </button>
+{{/if}}

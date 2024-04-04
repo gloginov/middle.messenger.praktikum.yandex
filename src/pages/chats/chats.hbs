@@ -1,0 +1,14 @@
+{{#> LayoutGrid  }}
+    {{#*inline "leftContent" }}
+        {{> ChatNavigation}}
+        {{> ChatList chats=chats }}
+    {{/inline}}
+
+    {{#*inline "rightContent" }}
+        {{#if selectedChat}}
+            {{> SelectedChat}}
+        {{else}}
+            <span class="chats-stub">Выберите чат чтобы отправить сообщение</span>
+        {{/if}}
+    {{/inline}}
+{{/LayoutGrid}}

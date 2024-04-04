@@ -1,0 +1,20 @@
+
+.avatar {
+
+  &-stub,
+  &-image {
+    border-radius: 50%;
+    background-color: var(--color-light-gray);
+  }
+
+  &-image {
+
+  }
+
+  &-stub {
+
+    &__initials {
+
+    }
+  }
+}

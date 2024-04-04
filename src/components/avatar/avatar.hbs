@@ -1,0 +1,9 @@
+<div class="avatar {{ className }}">
+    {{#if src}}
+        <img class="avatar-image" style="width: {{ width }}; height: {{ height }} src={{ src }} alt="">
+    {{else}}
+        <div class="avatar-stub" style="width: {{ width }}; height: {{ height }}">
+            <span class="avatar-stub__initials"></span>
+        </div>
+    {{/if}}
+</div>

@@ -1,0 +1,42 @@
+.selected-chat {
+  padding: 0 20px;
+
+  &__date {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--color-gray);
+  }
+
+  &__balloon {
+    background-color: var(--color-balloon);
+    display: block;
+    padding: 11px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    max-width: 40%;
+    width: fit-content;
+
+    &_you {
+      background-color: var(--color-light-blue);
+
+      &:last-child {
+        margin-bottom: 30px;
+      }
+    }
+
+    &_stranger {
+
+      &:last-of-type {
+        margin-bottom: 30px;
+      }
+    }
+
+    &_image {
+      padding: 0;
+
+      img {
+        display: block;
+      }
+    }
+  }
+}

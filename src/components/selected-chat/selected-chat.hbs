@@ -1,0 +1,17 @@
+<div class="selected-chat">
+    {{#each selectedChat}}
+        <span class="selected-chat__date">{{ this.date }}</span>
+        {{#each this.messages }}
+            <div class="selected-chat__balloon
+                        selected-chat__balloon_{{ this.from }}
+                        selected-chat__balloon_{{ this.type }}"
+            >
+                {{#if (isText this.type)}}
+                    {{ this.message }}
+                {{else if (isImage this.type)}}
+                    <img src={{ this.message }} alt="">
+                {{/if}}
+            </div>
+        {{/each}}
+    {{/each}}
+</div>
