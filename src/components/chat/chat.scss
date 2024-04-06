@@ -4,9 +4,9 @@
 
   &-list {
     margin-top: 17px;
-
-    overflow: auto;
+    width: var(--width-chats-list);
     height: calc(100vh - 105px);
+    overflow: auto;
 
     scrollbar-color: var(--color-gray) transparent;
     scrollbar-width: thin;
@@ -29,6 +29,25 @@
       }
     }
 
+    &__icon {
+      min-height: auto;
+      position: relative;
+      top: -2px;
+      opacity: 0;
+
+      svg {
+        color: var(--color-gray);
+      }
+
+      &:hover {
+        background-color: transparent;
+
+        svg {
+          color: var(--color-black);
+        }
+      }
+    }
+
     &__wrap {
       position: relative;
       display: flex;
@@ -47,8 +66,11 @@
 
       &:hover {
         background-color: var(--color-light-blue);
-      }
 
+        .chat-item__icon {
+          opacity: 1;
+        }
+      }
     }
 
     &__avatar {
@@ -98,6 +120,7 @@
 
       &_you {
         color: var(--color-black);
+        font-weight: 500;
       }
     }
 
@@ -115,6 +138,13 @@
       color: var(--color-white);
       font-weight: 500;
       font-size: 11px;
+    }
+
+    &.active {
+
+      .chat-item__wrap {
+        background-color: var(--color-light-blue);
+      }
     }
   }
 }

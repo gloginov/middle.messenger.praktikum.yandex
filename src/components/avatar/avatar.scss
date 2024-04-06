@@ -1,4 +1,4 @@
-
+@import "scss/mixins.scss";
 .avatar {
 
   &-stub,
@@ -12,9 +12,16 @@
   }
 
   &-stub {
+    position: relative;
+    box-shadow: inset 0 -14px 15px rgba(0, 0, 0, .2);
 
     &__initials {
+      @include absoluteCentered();
+      color: var(--color-white);
+      text-shadow: 0 0 2px var(--color-black);
 
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 }

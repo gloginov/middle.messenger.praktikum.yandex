@@ -1,0 +1,28 @@
+.error-page {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+
+  &__wrap {
+    width: 200px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin-bottom: 70px;
+  }
+
+  &__backUrl {
+
+  }
+}

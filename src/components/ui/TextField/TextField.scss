@@ -1,6 +1,4 @@
 .custom-text-field {
-  margin-top: 13px;
-  padding-bottom: 13px;
   position: relative;
 
   &__error-message {
@@ -31,13 +29,14 @@
     }
 
     input {
-      padding: 0;
       border: none;
-      border-bottom: 1px solid var(--color-blue);
+      background-color: var(--color-light-gray);
       box-shadow: none;
       outline: none;
       width: 100%;
       line-height: 2;
+      border-radius: 30px;
+      padding: 4px 20px;
 
       &:focus {
 
@@ -72,5 +71,9 @@
         }
       }
     }
+  }
+
+  &_full {
+    width: 100%;
   }
 }

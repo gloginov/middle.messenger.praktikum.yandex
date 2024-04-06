@@ -1,7 +1,6 @@
-<div class="custom-text-field custom-text-field_{{ view }}">
+<div class="custom-text-field custom-text-field_{{ view }} {{ className }}">
     <label>
-        <input type="{{ type }}" value="{{ value }}" required {{!-- if required }} required {{/if --}} name="{{name}}">
-        {{# if label }}<span class="custom-text-field__label">{{ label }}</span>{{/if}}
+        <input type="{{ type }}" value="{{ value }}" placeholder="{{ placeholder }}"  required {{!-- if required }} required {{/if --}} name="{{name}}">
         <span class="custom-text-field__error-message">{{# if errorMessage }} {{errorMessage}} {{/if}}</span>
     </label>
 </div>

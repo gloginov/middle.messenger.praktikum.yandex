@@ -4,4 +4,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+
+  &_fixed {
+    position: fixed;
+    background-color: var(--color-bg-secondary-opacity);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }

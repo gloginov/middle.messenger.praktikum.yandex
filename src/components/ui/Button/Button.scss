@@ -1,9 +1,8 @@
 .custom-button {
   outline: none;
   box-shadow: none;
-  border: none;
   text-decoration: none;
-  padding: 0;
+  padding: 0 5px;
 
   display: inline-block;
   box-sizing: border-box;
@@ -11,6 +10,11 @@
   line-height: 37px;
   border-radius: 8px;
   cursor: pointer;
+  border: 1px solid var(--color-blue);
+
+  svg {
+    vertical-align: middle;
+  }
 
   &__text {
     font-family: var(--font-family);
@@ -30,22 +34,44 @@
   // views
   &_primary {
     background-color: var(--color-blue);
+
+    & > * {
+      color: var(--color-white);
+    }
   }
 
+  //
   &_secondary {
-    background-color: var(--color-gray);
+    //background-color: var(--color-dark-gray);
+    background: transparent;
+    border-color: var(--color-blue);
+
+    span {
+      color: var(--color-blue);
+    }
   }
 
   &_clear {
     background-color: transparent;
+    border: none;
 
     .custom-button__text {
       color: var(--color-blue);
+    }
+
+    &:hover {
+      background-color: var(--color-light-gray);
     }
   }
 
   &_ghost {
     background-color: var(--color-light-gray);
+    border-color: var(--color-light-gray);
+  }
+
+  &_alert {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
   }
   // forms
   &_round {
@@ -72,6 +98,13 @@
 
     .custom-button__text {
       font-size: 13px;
+    }
+  }
+
+  &_black-text {
+
+    .custom-button__text {
+      color: var(--color-black);
     }
   }
 }

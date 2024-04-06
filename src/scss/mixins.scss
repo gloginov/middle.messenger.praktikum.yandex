@@ -14,3 +14,10 @@
 @mixin randomBackground($index) {
   background: unquote("rgba(#{random(256) - $index}, #{random(1)+$index}, #{random(256)-$index}, #{random(100)/100} )");
 }
+
+@mixin absoluteCentered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

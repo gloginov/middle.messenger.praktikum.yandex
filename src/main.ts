@@ -5,27 +5,27 @@ import * as Containers from './containers';
 import * as Components from './components';
 
 import chatsJson from './mock/chats.json'
-import testImage from './public/test-image.png'
+import selectedJson from './mock/selectedChat.json'
 
 import './scss/main.scss'
 const pages = {
-  'many-chats': [ Pages.ChatsPage, { chats: [...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson] } ],
+  'many-chats': [ Pages.ChatsPage, { chats: [...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson].map((item) => {
+    item.active = false
+    return item;
+  } ) } ],
   'chats': [ Pages.ChatsPage, {
     chats: chatsJson,
-    selectedChat:[
-      {
-        date: '19 july',
-        messages: [
-          {id: 1, from: 'stranger', type: 'text', message: 'Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой. Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.', time: '12:01' },
-          {id: 2, from: 'stranger', type: 'image', message: testImage, time: '12:11' },
-          {id: 3, from: 'you', type: 'text', message: 'Круто!', time: '12:21' }
-        ]
-      }
-    ]
+    selectedChatPerson: chatsJson[0],
+    selectedChat: selectedJson
   }],
   'registration': [ Pages.RegistrationPage ],
   'login': [ Pages.LoginPage ],
-  'nav': [ Pages.NavigationPage ]
+  'nav': [ Pages.NavigationPage ],
+  'profile': [ Pages.ProfilePage ],
+  'setting': [ Pages.ProfileSetting ],
+  'loadimage': [ Pages.ProfileLoadImage ],
+  '404': [ Pages.ErrorPage, { code: '404', message: "Не туда попали", backLink: 'chats', backLinkText: "Назад к чатам" } ],
+  '500': [ Pages.ErrorPage, { code: '500', message: "Мы уже фиксим", backLink: 'chats', backLinkText: "Назад к чатам" } ]
 };
 
 // get current page from url
@@ -37,9 +37,20 @@ Handlebars.registerHelper('isImage', function (value) {
   return value === 'image';
 });
 
+Handlebars.registerHelper('isYour', function (value) {
+  return value === 'you';
+});
+
 Handlebars.registerHelper('isText', function (value) {
   return value === 'text';
 });
+
+Handlebars.registerHelper('getFirstLetter', function (value) {
+  if (!!value && value.length) {
+    return value[0]
+  }
+  return '';
+})
 
 // register Components
 Object.entries(Components).forEach(([ name, component ]) => {
@@ -55,6 +66,13 @@ Object.entries(Layouts).forEach(([ name, layout ]) => {
 Object.entries(Containers).forEach(([ name, container ]) => {
   Handlebars.registerPartial(name, container);
 });
+
+Handlebars.registerHelper('getPartial', function (value) {
+  if (!!Handlebars.partials[value]) {
+    return Handlebars.partials[value];
+  }
+  return null;
+})
 
 function navigate(page: string) {
   // @ts-ignore
