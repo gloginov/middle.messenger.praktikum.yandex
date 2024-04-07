@@ -16,7 +16,7 @@ EXPOSE 5173
 FROM base AS app
 
 # copy the app, note .dockerignore
-COPY ./src /usr/src/app
+COPY ./ /usr/src/app
 
 # install vendor libraries from package-lock.json
 RUN npm ci

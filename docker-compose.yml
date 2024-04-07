@@ -16,7 +16,7 @@ services:
       - "traefik.http.routers.ya.rule=Host(`ya.docker`)"
       - "traefik.docker.network=${TRAEFIK_NETWORK_NAME}"
     volumes:
-      - ./src:/usr/src/app
+      - ./:/usr/src/app
     ports:
       - "5173:5173"
     networks:
