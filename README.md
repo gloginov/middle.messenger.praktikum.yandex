@@ -7,6 +7,8 @@
 - `docker-compose build` — установка стабильной версии,
 - `docker-compose up -d` — смонтировать контейнер,
 - `docker-compose down --remove-orphans` — размонтировать контейнер
+- `docker-compose exec node bash` — войти в bash контейнера node для запуска команд
+- `npm run build` — сборка стабильной версии
 
 ### Без использования
 

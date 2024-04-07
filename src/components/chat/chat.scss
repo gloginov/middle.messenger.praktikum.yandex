@@ -1,4 +1,4 @@
-@import "scss/mixins";
+@import "../../scss/mixins";
 
 .chat {
 
@@ -34,6 +34,7 @@
       position: relative;
       top: -2px;
       opacity: 0;
+      line-height: 1;
 
       svg {
         color: var(--color-gray);

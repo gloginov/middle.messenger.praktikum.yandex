@@ -19,5 +19,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+//  "include": ["src"]
+//  "include": ["components", "containers", "layouts", "mock", "pages", "public", "scss"]
 }

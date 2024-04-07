@@ -8,16 +8,17 @@ import chatsJson from './mock/chats.json'
 import selectedJson from './mock/selectedChat.json'
 
 import './scss/main.scss'
+
 const pages = {
-  'many-chats': [ Pages.ChatsPage, { chats: [...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson].map((item) => {
-    item.active = false
-    return item;
-  } ) } ],
   'chats': [ Pages.ChatsPage, {
     chats: chatsJson,
     selectedChatPerson: chatsJson[0],
     selectedChat: selectedJson
   }],
+  'many-chats': [ Pages.ChatsPage, { chats: [...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson, ...chatsJson].slice(0).map((item) => {
+    item.active = false
+    return item;
+  } ) } ],
   'registration': [ Pages.RegistrationPage ],
   'login': [ Pages.LoginPage ],
   'nav': [ Pages.NavigationPage ],
@@ -83,6 +84,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context);
 }
 
+// @ts-ignore
 if (pages[routeFromUrl()]) {
   document.addEventListener('DOMContentLoaded', () => navigate(routeFromUrl()));
 } else {
