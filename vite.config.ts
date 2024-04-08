@@ -5,6 +5,7 @@ export default defineConfig({
   build: {
     outDir: 'dist'
   },
+  base: './',
   server: {
     host: '0.0.0.0',
     watch: {
