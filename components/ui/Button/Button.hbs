@@ -44,6 +44,7 @@
         {{ className }}
     "
             style={{ style }}
+            {{# if type}} type="{{type}}" {{/if}}
     >
         {{# if iconLeft}} {{{getPartial iconLeft}}} {{/if}}
         {{# if text}}<span class="custom-button__text">{{ text }}</span>{{/if}}
