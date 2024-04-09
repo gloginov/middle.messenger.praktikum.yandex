@@ -1,0 +1,23 @@
+@use 'sass:math';
+@mixin shadow-box {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
+}
+
+@mixin clearDefault {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin randomBackground($index) {
+  background: unquote("rgba(#{random(256) - $index}, #{random(1)+$index}, #{random(256)-$index}, #{random(100)} )");
+}
+
+@mixin absoluteCentered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

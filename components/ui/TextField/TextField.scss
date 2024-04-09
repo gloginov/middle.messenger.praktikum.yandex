@@ -1,0 +1,79 @@
+.custom-text-field {
+  position: relative;
+
+  &__error-message {
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 100%;
+    color: var(--color-red);
+    top: 7px;
+    position: relative;
+
+    display: none;
+  }
+
+  label {
+
+    .custom-text-field__label {
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 100%;
+      color: var(--color-gray);
+
+      position: absolute;
+      left: 0;
+      top: 6px;
+      z-index: 0;
+
+      transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    }
+
+    input {
+      border: none;
+      background-color: var(--color-light-gray);
+      box-shadow: none;
+      outline: none;
+      width: 100%;
+      line-height: 2;
+      border-radius: 30px;
+      padding: 4px 20px;
+
+      &:focus {
+
+        & ~ .custom-text-field__label {
+          top: -11px;
+          font-size: 9px;
+        }
+      }
+
+      &:required,
+      &.filled {
+
+        &:valid,
+        &.valid {
+
+          & ~ .custom-text-field__label {
+            top: -11px;
+            font-size: 9px;
+          }
+
+          & ~ .custom-text-field__error-message {
+            display: none;
+          }
+        }
+
+        &:invalid,
+        &.invalid {
+
+          & ~ .custom-text-field__error-message {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  &_full {
+    width: 100%;
+  }
+}

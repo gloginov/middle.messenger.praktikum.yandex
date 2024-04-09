@@ -1,0 +1,31 @@
+@import "../../scss/mixins";
+
+.form {
+  @include shadow-box;
+
+  background: #fff;
+  border-radius: 12px;
+  width: calc(340px - (30px*2));
+  padding: 30px;
+  padding-bottom: 18px;
+
+  &__title {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 50px;
+  }
+
+  &__form {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__footer {
+
+  }
+}

@@ -1,0 +1,18 @@
+<form class="form__form form__form_registration">
+    <div class="form__content">
+        {{> Text style="font-size:20px;font-weight:500;color:var(--color-black);" text="Регистрация" className="form__title" }}
+
+        {{> TextFieldLabel label="Почта" type="text"  name="email"}}
+        {{> TextFieldLabel label="Логин" type="text"  value="ivanivanov" name="login"}}
+        {{> TextFieldLabel label="Имя" type="text"  name="first_name"}}
+        {{> TextFieldLabel label="Фамилия" type="text"  name="second_name"}}
+        {{> TextFieldLabel label="Телефон" type="text"  name="phone"}}
+        {{> TextFieldLabel label="Пароль" type="password"  name="password"}}
+        {{> TextFieldLabel label="Пароль (еще раз)" type="password"  name="password_repeat"}}
+    </div>
+
+    <div class="form__footer">
+        {{> Button text="Зарегистрироваться" view="primary" width="full"}}
+        {{> Button text="Войти" view="clear" width="full" size="small"  href="/login"}}
+    </div>
+</form>

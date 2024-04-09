@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Вася Пупкин",
+    "avatar": "https://i.pravatar.cc/300",
+    "text": "=)",
+    "youLast": true,
+    "date": "11:21",
+    "newMessage": 0,
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "Киноклуб",
+    "text": "Друзья, у меня для вас особенный выпуск новостей, которые вас удивят ведь если не так то все",
+    "youLast": false,
+    "date": "Monday",
+    "newMessage": 2,
+    "active": false
+  },
+  {
+    "id": 3,
+    "name": "Практикум",
+    "text": "Друзья, у меня для вас особенный выпуск новостей, которые вас удивят ведь если не так то все",
+    "newMessage": 232,
+    "youLast": false,
+    "date": "Sunday",
+    "active": false
+  }
+]

@@ -1,0 +1,128 @@
+@import "../../scss/mixins";
+
+.profile {
+
+  &__back {
+    display: flex;
+    padding: 0 18px;
+    flex-flow: row;
+    align-items: center;
+    height: 100%;
+
+    .custom-button.profile__go-back {
+      min-height: 28px;
+      line-height: 28px;
+      width: 28px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    max-width: 510px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 60px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+
+  &-avatar {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+
+    margin-bottom: 80px;
+
+    label {
+
+      input[type="file"] {
+        opacity: 0;
+        visibility: hidden;
+        z-index: -1;
+        position: absolute;
+        left: -1000px;
+      }
+    }
+
+    &__upload {
+      @include absoluteCentered();
+
+      background-color: rgba(0, 0, 0, .5);
+      width: 100%;
+      height: 100%;
+      color: var(--color-white);
+      font-weight: 500;
+      flex-flow: row;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      display: none;
+    }
+
+    &:hover {
+
+      .profile-avatar__upload {
+        display: flex;
+      }
+
+      label {
+      }
+    }
+  }
+}
+
+.profile-info {
+  width: 100%;
+
+  .profile-info-field {
+    width: 100%;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 0;
+    margin: 7px 0;
+
+    label {
+      display: flex;
+      flex-flow: row-reverse;
+      justify-content: space-between;
+
+      input {
+        width: auto;
+        text-align: right;
+      }
+
+      span.profile-info-field__label {
+        position: static;
+      }
+    }
+
+    &_unactive {
+      cursor: default;
+      pointer-events: none;
+
+      input {
+        color: var(--color-gray);
+      }
+
+      &:after {
+        background-color: var(--color-border);
+        top: 30px;
+      }
+    }
+  }
+
+  &__buttons {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+
+    .custom-button {
+      margin-bottom: 7px;
+    }
+  }
+}

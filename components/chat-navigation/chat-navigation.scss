@@ -1,0 +1,33 @@
+.chat-navigation {
+  width: var(--width-chats-list);
+
+  &__wrap {
+    padding: 0 10px;
+    height: inherit;
+  }
+
+  &__link-profile {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    text-align: right;
+    color: var(--color-gray);
+    text-decoration: none;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-end;
+
+    transition: color 0.2s ease-in-out;
+    padding-top: 21px;
+    margin-bottom: 23px;
+
+    svg {
+      margin-left: 8px;
+    }
+
+    &:hover {
+      color: var(--color-dark-gray);
+    }
+  }
+}

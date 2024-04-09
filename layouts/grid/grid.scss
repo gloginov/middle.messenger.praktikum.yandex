@@ -1,0 +1,21 @@
+.grid {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+
+  &__column {
+    height: 100%;
+    position: relative;
+
+    &_left {
+      background-color: var(--color-thin-gray);
+      border-right: 1px solid var(--color-border);
+    }
+
+    &_right {
+      width: auto;
+      flex: 1;
+    }
+  }
+}

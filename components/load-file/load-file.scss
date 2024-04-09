@@ -1,0 +1,23 @@
+.form__form_load-image {
+
+  label {
+    position: relative;
+    display: block;
+    width: 122px;
+    margin: 0 auto;
+    margin-bottom: 45px;
+    text-align: center;
+
+    input[type="file"] {
+      opacity: 0;
+      position: absolute;
+      left: -1000px;
+      visibility: hidden;
+    }
+
+    a {
+      color: var(--color-blue);
+      font-size: 12px;
+    }
+  }
+}
