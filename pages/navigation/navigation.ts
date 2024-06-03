@@ -2,9 +2,8 @@ import './navigation.scss'
 import Block from "../../lib/models/Block";
 
 export default class NavigationPage extends Block {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
   }
 
   protected render(): string {

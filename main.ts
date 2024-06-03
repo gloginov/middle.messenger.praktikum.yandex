@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import Handlebars from "handlebars";
 import * as Pages from './pages';
 import * as Layouts from './layouts';
@@ -8,11 +7,7 @@ import * as Components from './components';
 
 import { requireJsComponent } from './lib/requireJsComponent';
 
-import chatsJson from './mock/chats.json'
-import selectedJson from './mock/selectedChat.json'
-
 import './scss/main.scss'
-import TextFieldLabel from "./components/ui/TextFieldLabel/TextFieldLabel";
 
 const pages = {
   'chats': Pages.ChatsPage,
@@ -64,6 +59,7 @@ Object.entries(Components).forEach(([ name, component ]) => {
     requireJsComponent(name, component);
     return;
   }
+  // @ts-ignore
   Handlebars.registerPartial(name, component);
 });
 //
@@ -84,20 +80,21 @@ Handlebars.registerHelper('getPartial', function (value) {
   return null;
 })
 //
-function navigate(page: string) {
+function navigate(page: any) {
   const container = document.getElementById('app')!;
 
   //@ts-ignore
   const Component = pages[page]
   const component = new Component();
 
-  window[page] = component
+  // window[page] = component
   window.history.pushState({}, '', page);
 
   container.innerHTML = '';
   container.append(component.getContent()!);
 }
 
+//@ts-ignore
 if (pages[routeFromUrl()]) {
   document.addEventListener('DOMContentLoaded', () => navigate(routeFromUrl()));
 } else {

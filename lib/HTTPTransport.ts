@@ -18,24 +18,24 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 // type OptionsWithoutMethod = { data?: any };
 
 class HTTPTransport {
-  get<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(url, {...options, method: METHOD.GET});
+  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, {...options, method: METHOD.GET});
   };
 
-  post<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(url, {...options, method: METHOD.POST});
+  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, {...options, method: METHOD.POST});
   };
 
-  patch<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(url, {...options, method: METHOD.PATCH});
+  patch(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, {...options, method: METHOD.PATCH});
   };
 
-  put<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(url, {...options, method: METHOD.PUT});
+  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, {...options, method: METHOD.PUT});
   };
 
-  delete<TResponse>(url: string, options: OptionsWithoutMethod = {}): Promise<TResponse> {
-    return this.request<TResponse>(url, {...options, method: METHOD.DELETE});
+  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    return this.request(url, {...options, method: METHOD.DELETE});
   };
 
   request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {

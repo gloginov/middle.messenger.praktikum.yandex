@@ -1,9 +1,13 @@
 /* eslint-disable */
 import Handlebars from 'handlebars';
-import Block from "./models/Block";
+// import Block from "./models/Block";
 import {HelperOptions} from "handlebars";
 
-export function requireJsComponent(name: string, Component: typeof Block) {
+declare global {
+  interface Window { MyNamespace: any; }
+}
+
+export function requireJsComponent(name: string, Component: any) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`;
   }
@@ -13,10 +17,6 @@ export function requireJsComponent(name: string, Component: typeof Block) {
 function (this: unknown, {hash, data, fn}: HelperOptions
   ) {
     const component = new Component(hash);
-
-    // @ts-ignore
-    window.requireHelpers = {}
-    window.requireHelpers[name] = component
 
     const dataAttribute = `data-id="${component.id}"`;
 

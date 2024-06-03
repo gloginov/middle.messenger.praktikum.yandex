@@ -1,21 +1,15 @@
 import './TextField.scss'
 import TextFieldModel from "../../../lib/models/TextFieldModel";
+import {TextFieldType} from "../../../types/types";
 
 export class TextField extends TextFieldModel {
-  constructor(props) {
-    super(props);
+  constructor(props: TextFieldType) {
+    super({
+      ...props
+    });
   }
 
   protected render(): string {
-    const {
-      view,
-      className,
-      type,
-      value,
-      placeholder,
-      errorMessage,
-      required
-    } = this.props;
 
     return `
       <div class="custom-text-field custom-text-field_{{ view }} {{ className }} {{# if showError }} custom-text-field_error {{/if}}">

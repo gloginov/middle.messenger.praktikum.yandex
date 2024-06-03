@@ -1,9 +1,8 @@
 import Block from '../../lib/models/Block.ts';
 
 export default class RegistrationPage extends Block {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
   }
 
   protected render(): string {
@@ -13,7 +12,6 @@ export default class RegistrationPage extends Block {
         {{ FormRegistration }}
       {{/FormContainer}}
     {{/LayoutCentered}}
-
     `;
   }
 

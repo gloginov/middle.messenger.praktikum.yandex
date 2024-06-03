@@ -1,9 +1,12 @@
 import './TextFieldLabel.scss'
 import TextFieldModel from "../../../lib/models/TextFieldModel";
+import {TextFieldType} from "../../../types/types";
 
 export class TextFieldLabel extends TextFieldModel {
-  constructor(props) {
-    super(props)
+  constructor(props: TextFieldType) {
+    super({
+      ...props
+    })
   }
 
   protected render(): string {

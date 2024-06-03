@@ -1,9 +1,10 @@
 import Block from "../../../lib/models/Block";
 import {validateEmail, validateName, validateLength, validatePhone, validateLogin} from "../../../helpers/validate";
 import {formToJson} from "../../../helpers/formToJson";
+import {Callback} from "../../../types/types";
 
 export default class ProfileSetting extends Block {
-  constructor(props) {
+  constructor(props: Callback) {
     super({
       ...props,
       validateEmail: validateEmail,
@@ -13,7 +14,9 @@ export default class ProfileSetting extends Block {
       validateLogin: validateLogin,
       onClick: (e: Event) => {
         e.preventDefault();
-        console.log('Submit form, value:', formToJson(e.target));
+        if (e.target instanceof Element) {
+          console.log('Submit form, value:', formToJson(e.target));
+        }
       }
     });
   }

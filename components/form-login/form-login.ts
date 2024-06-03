@@ -9,7 +9,9 @@ export class FormLogin extends Block {
       validateRequire: validateRequire,
       onClick: (e: Event) => {
         e.preventDefault();
-        console.log('Submit form, value:', formToJson(e.target));
+        if (e.target instanceof Element) {
+          console.log('Submit form, value:', formToJson(e.target));
+        }
       }
     });
   }

@@ -1,10 +1,12 @@
 import './Button.scss'
-
+import {ButtonType} from '../../../types/types'
 import Block from "../../../lib/models/Block";
 
 class Button extends Block {
-  constructor(props) {
-    super(props);
+  constructor(props: ButtonType) {
+    super({
+      ...props
+    });
   }
 
   protected init(): void {
@@ -14,13 +16,6 @@ class Button extends Block {
   }
 
   protected render(): string {
-    const {
-      type,
-      label,
-      page,
-
-      href
-    } = this.props;
 
     return (`
       {{# if href}}

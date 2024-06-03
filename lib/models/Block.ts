@@ -11,7 +11,7 @@ export interface BlockClass<P extends object, R extends RefType> extends Functio
   componentName?: string;
 }
 
-class Block<Props extends object, Refs extends RefType = RefType> {
+class Block<Props extends object = any, Refs extends RefType = RefType> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -21,13 +21,13 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   };
 
   public id = nanoid(6);
-  protected props: Props;
+  protected props: Props & { events: any };
   protected refs: Refs = {} as Refs;
   private children: Block<object>[] = [];
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props: Props = {} as Props | any ) {
     const eventBus = new EventBus();
 
     this.props = this._makePropsProxy(props);
@@ -93,7 +93,7 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
   }
 
-  private _isDeepEqual(obj1, obj2) {
+  private _isDeepEqual(obj1: any, obj2: any) {
     const keys1 = Object.keys(obj1);
     const keys2 = Object.keys(obj2);
 

@@ -9,6 +9,7 @@ export default class EventBus<E extends string = string, M extends { [K in E]: u
       this.listeners[event] = [];
     }
 
+    // @ts-ignore
     this.listeners[event].push(callback);
   }
 
@@ -17,6 +18,7 @@ export default class EventBus<E extends string = string, M extends { [K in E]: u
       throw new Error(`Нет события: ${event}`);
     }
 
+    // @ts-ignore
     this.listeners[event] = this.listeners[event]!.filter(
       listener => listener !== callback,
     );

@@ -1,8 +1,8 @@
 import Block from "../../../lib/models/Block";
 
 export default class ProfileLoadImage extends Block {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   protected render(): string {
@@ -30,12 +30,12 @@ export default class ProfileLoadImage extends Block {
             </a>
 
             <div class="profile-info">
-              {{> TextFieldLabel label="Почта" type="text" errorMessage="" value="ivanivanov@mm.rr" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-              {{> TextFieldLabel label="Логин" type="text" errorMessage="" value="ivanivanov" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-              {{> TextFieldLabel label="Имя" type="text" errorMessage="" value="Василий" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-              {{> TextFieldLabel label="Фамилия" type="text" errorMessage="" value="Пупкин" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-              {{> TextFieldLabel label="Имя в чате" type="text" errorMessage="" value="ivanivanov" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-              {{> TextFieldLabel label="Телефон" type="text" errorMessage="" value="+7 (999) 999 99 99" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Почта" type="text" errorMessage="" value="ivanivanov@mm.rr" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Логин" type="text" errorMessage="" value="ivanivanov" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Имя" type="text" errorMessage="" value="Василий" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Фамилия" type="text" errorMessage="" value="Пупкин" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Имя в чате" type="text" errorMessage="" value="ivanivanov" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+              {{ TextFieldLabel label="Телефон" type="text" errorMessage="" value="+7 (999) 999 99 99" name="login" className="profile-info-field inline profile-info-field_unactive"}}
 
               <div class="profile-info__buttons">
                 {{ Button text="Изменить данные" view="secondary" width="full" data-page="setting"}}

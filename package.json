@@ -7,8 +7,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "start": "vite build && vite preview --port 3000",
-    "lint:script": "npx eslint \"**/*.ts\"",
-    "fix:script": "npx eslint --fix \"**/*.ts\"",
+    "lint:script": "npx eslint \"**/*.{ts, js}\"",
+    "fix:script": "npx eslint --fix \"**/*.{ts, js}\"",
     "lint:style": "npx stylelint \"**/*.scss\"",
     "fix:style": "npx stylelint --fix \"**/*.scss\""
   },

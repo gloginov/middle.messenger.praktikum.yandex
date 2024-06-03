@@ -2,9 +2,15 @@ import Block from "../../lib/models/Block";
 import './selected-chat.scss'
 import { formToJson } from '../../helpers/formToJson';
 import {validateRequire} from "../../helpers/validate";
+import {Callback, SelectedChatType, SelectedChatPersonType} from "../../types/types";
+
+interface IProps {
+  selectedChatPerson: () => SelectedChatPersonType,
+  selectedChat: () => SelectedChatType[],
+}
 
 export class SelectedChat extends Block {
-  constructor(props) {
+  constructor(props: IProps & Callback) {
     super({
       ...props,
       validateRequire: validateRequire,
@@ -12,7 +18,9 @@ export class SelectedChat extends Block {
       selectedChat: props.selectedChat(),
       onClick: (e: Event) => {
         e.preventDefault();
-        console.log('Submit form, value:', formToJson(e.target));
+        if (e.target instanceof Element) {
+          console.log('Submit form, value:', formToJson(e.target));
+        }
       }
     });
   }
@@ -24,10 +32,6 @@ export class SelectedChat extends Block {
   }
 
   protected render(): string {
-    const {
-      selectedChat,
-      selectedChatPerson,
-    } = this.props;
 
     return (`
       <div class="selected-chat">

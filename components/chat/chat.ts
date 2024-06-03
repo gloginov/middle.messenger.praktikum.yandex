@@ -1,9 +1,21 @@
 import './chat.scss'
 import Block from '../../lib/models/Block.ts';
+import {Callback} from "../../types/types";
+
+type Chat = {
+  name: string;
+  youLast: boolean;
+  date: string;
+  text: string;
+}
+
+interface IProps {
+  chats: () => Chat[],
+}
 
 class ChatList extends Block {
 
-  constructor(props) {
+  constructor(props: IProps & Callback) {
     super({
       ...props,
       chats: props.chats()
@@ -11,7 +23,6 @@ class ChatList extends Block {
   }
 
   protected render(): string {
-    const { chats } = this.props;
 
     return `
       <div class="chat-list">
@@ -25,12 +36,11 @@ class ChatList extends Block {
 
 class ChatItem extends Block {
 
-  constructor(props) {
+  constructor(props: Chat) {
     super(props);
   }
 
   protected render(): string {
-    const { chat } = this.props
 
     return `
       <div class="chat-item {{#if chat.active}} active {{/if}}">

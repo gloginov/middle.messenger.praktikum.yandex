@@ -2,9 +2,8 @@ import './error.scss'
 import Block from "../../lib/models/Block";
 
 export default class ErrorPage extends Block {
-  constructor(props) {
+  constructor() {
     super({
-      ...props,
       code: '404',
       message: "Не туда попали",
       backLink: 'chats',
