@@ -99,6 +99,15 @@
       span.profile-info-field__label {
         position: static;
       }
+
+      .custom-text-field-label__error-message {
+        position: absolute;
+        left: 50%;
+        top: -13px;
+        width: auto;
+        transform: translateX(-50%);
+        text-align: center;
+      }
     }
 
     &_unactive {
@@ -112,6 +121,10 @@
       &:after {
         background-color: var(--color-border);
         top: 30px;
+      }
+
+      &__error-message {
+        display: none;
       }
     }
   }

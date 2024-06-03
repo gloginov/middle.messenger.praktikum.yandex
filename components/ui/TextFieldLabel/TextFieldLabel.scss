@@ -21,7 +21,7 @@
     top: 7px;
     position: relative;
 
-    display: none;
+    display: block;
   }
 
   label {
@@ -34,6 +34,12 @@
       outline: none;
       width: 100%;
       line-height: 2;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
     }
   }
 

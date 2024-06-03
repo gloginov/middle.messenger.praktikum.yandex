@@ -1,5 +1,8 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bd2b1b59-8d1f-4dd6-8e15-82246fdd28da/deploy-status)](https://app.netlify.com/sites/poetic-dasik-afa0e5/deploys)
+
 ## Мессенджер inLogin
 https://deploy--poetic-dasik-afa0e5.netlify.app/
 

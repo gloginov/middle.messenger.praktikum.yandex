@@ -2,8 +2,8 @@ version: '3.7'
 
 networks:
   traefik:
-    external:
-      name: 'traefik_traefik'
+    name: 'traefik_traefik'
+    external: true
 
 services:
   node:
