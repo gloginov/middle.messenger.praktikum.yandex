@@ -1,4 +1,3 @@
-import './login.scss'
 import Block from '../../lib/models/Block.ts';
 
 export default class LoginPage extends Block {

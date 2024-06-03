@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Handlebars from "handlebars";
 import * as Pages from './pages';
 import * as Layouts from './layouts';

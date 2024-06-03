@@ -1,5 +1,4 @@
-export function formToJson(form: EventTarget | null){
-  // @ts-ignore
+export function formToJson(form: Element){
   const inputElements = form ? form?.getElementsByTagName("input") : null,
     jsonObject = {};
   if (inputElements) {

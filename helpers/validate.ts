@@ -25,6 +25,7 @@ function validateName (name) {
 }
 
 function validateWithoutSpecialSymbol (string) {
+  /* eslint-disable no-useless-escape */
   return {result: !new RegExp(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/g).test(string), message: 'Не должно быть спецсимволов' }
 }
 

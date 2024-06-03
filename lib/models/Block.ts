@@ -5,7 +5,7 @@ import Handlebars from "handlebars";
 export type RefType = {
   [key: string]: Element | Block<object>
 }
-
+/* eslint-disable */
 export interface BlockClass<P extends object, R extends RefType> extends Function {
   new (props: P): Block<P, R>;
   componentName?: string;

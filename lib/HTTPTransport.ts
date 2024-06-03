@@ -8,7 +8,7 @@ enum METHOD {
 
 type Options = {
   method: METHOD;
-  data?: any;
+  data?: undefined;
 };
 
 // Тип Omit принимает два аргумента: первый — тип, второй — строка

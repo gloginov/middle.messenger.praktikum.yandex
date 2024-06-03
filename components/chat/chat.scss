@@ -19,7 +19,7 @@
       &:nth-child(#{$i}) {
         .chat-item__avatar {
           &>* {
-            @include randomBackground($i);
+            @include random-background($i);
           }
         }
       }
@@ -51,8 +51,7 @@
       flex-flow: row;
       padding: 10px;
 
-      //border-top: 1px solid var(--color-border);
-
+      // border-top: 1px solid var(--color-border);
       &::after {
         content: '';
         position: absolute;
