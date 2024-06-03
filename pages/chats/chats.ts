@@ -1,5 +1,5 @@
 import './chats.scss'
-import Block from '../../lib/models/Block.ts';
+import Block from '../../lib/models/Block';
 import chatsJson from '../../mock/chats.json'
 import selectedJson from '../../mock/selectedChat.json'
 

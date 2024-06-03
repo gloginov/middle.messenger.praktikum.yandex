@@ -1,1 +1,1 @@
-export { FormContainer } from './form/form.ts'
+export { FormContainer } from './form/form'

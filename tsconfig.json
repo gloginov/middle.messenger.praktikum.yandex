@@ -7,7 +7,7 @@
     }
   },
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
+//    "allowImportingTsExtensions": true,
     "outDir": "dist",
     "target": "es2017",
     "noImplicitAny": true,

@@ -1,5 +1,5 @@
 import './form-login.scss'
-import Block from '../../lib/models/Block.ts';
+import Block from '../../lib/models/Block';
 import {formToJson} from "../../helpers/formToJson";
 import {validateRequire} from "../../helpers/validate";
 

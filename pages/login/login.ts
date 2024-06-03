@@ -1,4 +1,4 @@
-import Block from '../../lib/models/Block.ts';
+import Block from '../../lib/models/Block';
 
 export default class LoginPage extends Block {
   constructor() {

@@ -1,2 +1,2 @@
-export { LayoutGrid } from './grid/grid.ts'
-export { LayoutCentered } from './centered/centered.ts'
+export { LayoutGrid } from './grid/grid'
+export { LayoutCentered } from './centered/centered'

@@ -1,5 +1,5 @@
 import './chat.scss'
-import Block from '../../lib/models/Block.ts';
+import Block from '../../lib/models/Block';
 import {Callback} from "../../types/types";
 
 type Chat = {
