@@ -3,7 +3,6 @@
   box-shadow: none;
   text-decoration: none;
   padding: 0 5px;
-
   display: inline-block;
   box-sizing: border-box;
   min-height: 37px;
@@ -31,6 +30,7 @@
     opacity: .8;
     transition: opacity .1s ease-in-out;
   }
+
   // views
   &_primary {
     background-color: var(--color-blue);
@@ -73,6 +73,7 @@
     background-color: var(--color-red);
     border-color: var(--color-red);
   }
+
   // forms
   &_round {
     border-radius: 50%;
@@ -86,23 +87,21 @@
   &_full {
     width: 100%;
   }
+
   // sizes "small", "medium", "large"
   &_small {
-
     .custom-button__text {
       font-size: 11px;
     }
   }
 
   &_medium {
-
     .custom-button__text {
       font-size: 13px;
     }
   }
 
   &_black-text {
-
     .custom-button__text {
       color: var(--color-black);
     }

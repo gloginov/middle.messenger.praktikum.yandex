@@ -76,7 +76,7 @@ Object.entries(Containers).forEach(([ name, container ]) => {
 });
 
 Handlebars.registerHelper('getPartial', function (value) {
-  if (!!Handlebars.partials[value]) {
+  if (Handlebars.partials[value]) {
     return Handlebars.partials[value];
   }
   return null;

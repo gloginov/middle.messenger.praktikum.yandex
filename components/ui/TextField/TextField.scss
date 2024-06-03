@@ -8,23 +8,19 @@
     color: var(--color-red);
     top: 7px;
     position: relative;
-
     display: none;
   }
 
   label {
-
     .custom-text-field__label {
       font-weight: 500;
       font-size: 13px;
       line-height: 100%;
       color: var(--color-gray);
-
       position: absolute;
       left: 0;
       top: 6px;
       z-index: 0;
-
       transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
     }
 
@@ -40,12 +36,11 @@
 
       input::-webkit-outer-spin-button,
       input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
+        appearance: none;
         margin: 0;
       }
 
       &:focus {
-
         & ~ .custom-text-field__label {
           top: -11px;
           font-size: 9px;
@@ -54,10 +49,8 @@
 
       &:required,
       &.filled {
-
         &:valid,
         &.valid {
-
           & ~ .custom-text-field__label {
             top: -11px;
             font-size: 9px;
@@ -70,7 +63,6 @@
 
         &:invalid,
         &.invalid {
-
           & ~ .custom-text-field__error-message {
             display: block;
           }

@@ -13,10 +13,7 @@
 
   &__placeholder {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     text-align: center;
     display: flex;
     flex-flow: row;
@@ -30,12 +27,11 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-
     display: none;
   }
 
   &__input {
-    @include clearDefault();
+    @include clearDefault;
 
     width: calc(100% - 44px);
     height: 100%;
@@ -50,18 +46,18 @@
       & + .search__icon {
         display: block;
       }
+
       & ~ .search__placeholder {
           display: none;
       }
     }
 
     &:required  {
-
       &:valid {
-
         & + .search__icon {
           display: block;
         }
+
         & ~ .search__placeholder {
           display: none;
         }

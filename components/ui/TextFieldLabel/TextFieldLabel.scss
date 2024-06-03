@@ -3,7 +3,7 @@
   padding-bottom: 13px;
   position: relative;
 
-  &:after {
+  &::after {
     content: '';
     position: absolute;
     top: 24px;
@@ -20,15 +20,14 @@
     color: var(--color-red);
     top: 7px;
     position: relative;
-
     display: block;
   }
 
   label {
-
     input {
       padding: 0;
       border: none;
+
       //border-bottom: 1px solid var(--color-blue);
       box-shadow: none;
       outline: none;
@@ -38,33 +37,27 @@
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
+      appearance: none;
       margin: 0;
     }
   }
 
   &:not(.inline) {
-
     label {
-
       .custom-text-field-label__label {
         font-weight: 500;
         font-size: 13px;
         line-height: 100%;
         color: var(--color-gray);
-
         position: absolute;
         left: 0;
         top: 6px;
         z-index: 0;
-
         transition: top 0.2s ease-in-out, font-size 0.2s ease-in-out;
       }
 
       input {
-
         &:focus {
-
           & ~ .custom-text-field-label__label {
             top: -11px;
             font-size: 9px;
@@ -73,10 +66,8 @@
 
         &:required,
         &.filled {
-
           &:valid,
           &.valid {
-
             & ~ .custom-text-field-label__label {
               top: -11px;
               font-size: 9px;
@@ -89,7 +80,6 @@
 
           &:invalid,
           &.invalid {
-
             & ~ .custom-text-field-label__error-message {
               display: block;
             }
@@ -100,7 +90,6 @@
   }
 
   &.inline {
-
     label {
       align-items: center;
 

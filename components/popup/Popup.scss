@@ -1,12 +1,10 @@
 @import "../../scss/mixins";
 
 .popup {
-
-  @include shadow-box();
+  @include shadow-box;
 
   padding: 15px;
   border-radius: 12px;
   background-color: var(--color-white);
-
   position: absolute;
 }

@@ -28,8 +28,8 @@ class TextFieldModel<Props extends object> extends Block{
           this.props.message
       ,
       showError:
-        !!value ?
-          !!this.props.validate ?
+        value ?
+          this.props.validate ?
             !this.props.validate(value).result
             :
             !value
