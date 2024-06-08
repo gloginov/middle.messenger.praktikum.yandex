@@ -2,17 +2,34 @@
   "name": "Messenger inLogin",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "vite build && vite preview --port 3000"
+    "start": "vite build && vite preview --port 3000",
+    "lint:script": "npx eslint \"**/*.{ts, js}\"",
+    "fix:script": "npx eslint --fix \"**/*.{ts, js}\"",
+    "lint:style": "npx stylelint \"**/*.scss\"",
+    "fix:style": "npx stylelint --fix \"**/*.scss\""
   },
   "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^20.14.0",
+    "eslint": "^8.57.0",
+    "globals": "^15.3.0",
     "handlebars": "^4.7.8",
     "sass": "^1.72.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.11.0",
+    "vite": "^5.2.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-stylelint": "^5.3.1"
+  },
+  "dependencies": {
+    "nanoid": "^5.0.7"
   }
 }

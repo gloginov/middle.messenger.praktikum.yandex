@@ -1,7 +1,7 @@
-
 :root {
-  //fonts
+  // fonts
   --font-family: "Inter", sans-serif;
+
   // colors
   --color-white: #fff;
   --color-red: #ff2f2f;
@@ -12,13 +12,10 @@
   --color-light-blue: #E4EDFD;
   --color-blue: #3369f3;
   --color-black: #1E1E1E;
-
   --color-border: #EAEAEA;
   --color-balloon: #F8F8F8;
-  --color-bg-secondary-opacity: rgba(82, 82, 82, 0.5);
-
+  --color-bg-secondary-opacity: rgb(82 82 82 / 50%);
   --height-header: 72px;
   --height-footer: 58px;
-
   --width-chats-list: 310px;
 }

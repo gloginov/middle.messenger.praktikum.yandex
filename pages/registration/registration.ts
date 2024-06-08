@@ -1,1 +1,19 @@
-export { default as RegistrationPage } from './registration.hbs?raw'
+import Block from '../../lib/models/Block';
+
+export default class RegistrationPage extends Block {
+  constructor() {
+    super();
+  }
+
+  protected render(): string {
+    return `
+    {{#> LayoutCentered}}
+      {{#> FormContainer }}
+        {{ FormRegistration }}
+      {{/FormContainer}}
+    {{/LayoutCentered}}
+    `;
+  }
+
+}
+

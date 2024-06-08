@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import stylelint from 'vite-plugin-stylelint';
 
 export default defineConfig({
   root: '.',
@@ -11,5 +12,10 @@ export default defineConfig({
     watch: {
       usePolling: true
     }
-  }
+  },
+  plugins: [
+    stylelint({
+      fix: true,
+    })
+  ],
 })

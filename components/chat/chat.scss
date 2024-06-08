@@ -1,13 +1,11 @@
 @import "../../scss/mixins";
 
 .chat {
-
   &-list {
     margin-top: 17px;
     width: var(--width-chats-list);
     height: calc(100vh - 105px);
     overflow: auto;
-
     scrollbar-color: var(--color-gray) transparent;
     scrollbar-width: thin;
   }
@@ -19,11 +17,9 @@
     @for $i from 1 to 100 {
 
       &:nth-child(#{$i}) {
-
         .chat-item__avatar {
-
           &>* {
-            @include randomBackground($i);
+            @include random-background($i);
           }
         }
       }
@@ -54,9 +50,9 @@
       display: flex;
       flex-flow: row;
       padding: 10px;
-      //border-top: 1px solid var(--color-border);
 
-      &:after {
+      // border-top: 1px solid var(--color-border);
+      &::after {
         content: '';
         position: absolute;
         top: -3px;
@@ -142,7 +138,6 @@
     }
 
     &.active {
-
       .chat-item__wrap {
         background-color: var(--color-light-blue);
       }
