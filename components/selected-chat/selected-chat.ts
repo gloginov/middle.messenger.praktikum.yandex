@@ -97,15 +97,14 @@ export class SelectedChat extends Block {
 
   protected render(): string {
     const { checkFrom } = this.props;
-// console.log(this.props.selectedChat)
 
     return (`
       <div class="selected-chat">
       
         {{#if showAddUserModal }}
           {{#> LayoutCentered showOverlay=true position="fixed"}}
-            {{#*inline "centerContent"}}
-              {{#> FormContainer }}
+            {{#* inline "centerContent"}}
+              {{#> FormContainer}}
                 {{#*inline "formContent"}}
                   {{ FormAddUsers onSubmit=onAddUserInChat }}
                 {{/inline}}
