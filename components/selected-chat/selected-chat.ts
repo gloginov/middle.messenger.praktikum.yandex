@@ -58,7 +58,6 @@ export class SelectedChat extends Block {
       onAddUserInChat: (e: Event) => {
         e.preventDefault();
         if (e.target instanceof Element) {
-          const self = this
           const formData = formToJson(e.target)
 
           chatsApi.addUserInChat({
@@ -73,7 +72,6 @@ export class SelectedChat extends Block {
       onDeleteUserInChat: (e: Event) => {
         e.preventDefault();
         if (e.target instanceof Element) {
-          const self = this
           const formData = formToJson(e.target)
 
           chatsApi.deleteUserInChat({
@@ -89,7 +87,6 @@ export class SelectedChat extends Block {
   }
 
   protected init(): void {
-    const self = this;
     this.props.events = {
       submit: this.props.onClick
     }

@@ -1,8 +1,9 @@
+/* eslint-disable */
 class Route {
-  private _pathname: any;
-  private readonly _blockClass: any;
+  private _pathname: undefined;
+  private readonly _blockClass: undefined;
   private _block: null;
-  private readonly _props: any;
+  private readonly _props: undefined;
 
   constructor(pathname, view, props) {
     this._pathname = pathname;
@@ -20,7 +21,7 @@ class Route {
 
   leave() {
     if (this._block) {
-      // @ts-ignore
+      // @ts-ignore @ts-expect-error
       this._block.hide();
     }
   }
@@ -40,7 +41,7 @@ class Route {
       this._renderDom(this._props.rootQuery, this._block);
       return;
     }
-    // @ts-ignore
+    // @ts-ignore @ts-expect-error
     this._block.show();
   }
 }

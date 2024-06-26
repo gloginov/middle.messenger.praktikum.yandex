@@ -11,7 +11,7 @@ export interface BlockClass<P extends object, R extends RefType> extends Functio
   componentName?: string;
 }
 
-class Block<Props extends object = any, Refs extends RefType = RefType> {
+class Block<Props extends object = undefined, Refs extends RefType = RefType> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -21,13 +21,13 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   };
 
   public id = nanoid(6);
-  protected props: Props & { events: any };
+  protected props: Props & { events: undefined };
   protected refs: Refs = {} as Refs;
   private children: Block<object>[] = [];
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props | any ) {
+  constructor(props: Props = {} as Props | undefined ) {
     const eventBus = new EventBus();
 
     this.props = this._makePropsProxy(props);
@@ -118,14 +118,14 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
   
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: undefined, newProps: undefined) {
 
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: undefined, newProps: undefined) {
     return !this._isDeepEqual(oldProps, newProps);
   }
 
@@ -152,7 +152,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     this._removeEvents()
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: undefined) => {
 
     if (!nextProps) {
       return;
@@ -180,7 +180,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     this._addEvents();
   }
 
-  private compile(template: string, context: any) {
+  private compile(template: string, context: undefined) {
     const contextAndStubs = {...context, __refs: this.refs};
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -192,7 +192,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     const temp = document.createElement('template');
 
     temp.innerHTML = html;
-    contextAndStubs.__children?.forEach(({embed}: any) => {
+    contextAndStubs.__children?.forEach(({embed}: undefined) => {
       embed(temp.content);
     });
 
@@ -223,7 +223,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     return this._element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: undefined) {
     const self = this;
 
     return new Proxy(props, {

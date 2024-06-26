@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './chats.scss'
 import chatsJson from '../../mock/chats.json'
 // import selectedJson from '../../mock/selectedChat.json'
@@ -11,7 +12,7 @@ import {formToJson} from "../../helpers/formToJson";
 let socketInstance;
 export default class ChatsPage extends isAuth {
 
-  constructor(props) {
+  constructor(props: undefined) {
     super({
       ...props,
       selectedChatId: null,
@@ -22,16 +23,13 @@ export default class ChatsPage extends isAuth {
       showCreateChatModal: false,
       onShowCreateChatModal: (e: Event) => {
         e.preventDefault();
-        this.setProps({
-          showCreateChatModal: true
-        })
+        this.setProps({showCreateChatModal: true})
       },
       onSelectChat: async (e: Event) => {
         e.preventDefault();
         const dataChild = findAncestor(e.target, '.chat-item')?.getAttribute('data-chatId');
         if (e.target instanceof Element && !!dataChild) {
           const chatId = findAncestor(e.target, '.chat-item')?.getAttribute('data-chatId');
-          const self = this;
           await socketConnection({
             "USER_ID": sessionStorage.getItem('userId'),
             "CHAT_ID": chatId
@@ -63,7 +61,7 @@ export default class ChatsPage extends isAuth {
                 console.log('Получены данные', event.data);
 
                 console.log(Array.isArray(JSON.parse(event.data)),
-                  this.props.selectedChat.concat(JSON.parse(event.data))
+                  self.props.selectedChat.concat(JSON.parse(event.data))
                 )
 
                 // instance.send(JSON.stringify({
@@ -71,12 +69,12 @@ export default class ChatsPage extends isAuth {
                 //   type: 'get old',
                 // }));
 
-                this.setProps({
+                self.setProps({
                   selectedChat:
                     Array.isArray(JSON.parse(event.data)) ?
                       JSON.parse(event.data).reverse()
                         :
-                    this.props.selectedChat.concat(JSON.parse(event.data))
+                    self.props.selectedChat.concat(JSON.parse(event.data))
 
                 //
 
@@ -119,18 +117,17 @@ export default class ChatsPage extends isAuth {
       onCreateChat: (e: Event) => {
         e.preventDefault();
         if (e.target instanceof Element) {
-          const self = this
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const _self = this
 
           const formData = formToJson(e.target)
           chatsApi.createChat(formData)
             .then((resp) => {
               chatsApi.getChats({}).then(({response}) => {
-                self.setProps({chats: JSON.parse(response)})
+                _self.setProps({chats: JSON.parse(response)})
               })
-
-              self.setProps({
-                showCreateChatModal: false
-              })
+              _self.setProps({showCreateChatModal: false})
             })
         }
       },
@@ -138,12 +135,14 @@ export default class ChatsPage extends isAuth {
         e.preventDefault();
         const dataChild = findAncestor(e.target, '.chat-item')?.getAttribute('data-chatId');
         if (e.target instanceof Element && !!dataChild) {
-          const self = this
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const _self = this
 
           chatsApi.deleteChat({ chatId: dataChild })
             .then(() => {
               chatsApi.getChats({}).then(({response}) => {
-                self.setProps({chats: JSON.parse(response)})
+                _self.setProps({chats: JSON.parse(response)})
               })
             })
         }
@@ -171,8 +170,7 @@ export default class ChatsPage extends isAuth {
   }
 
   protected init(): void {
-    let self = this;
-    chatsApi.getChats({}).then(({response}) => {self.setProps({chats: JSON.parse(response)})
+    chatsApi.getChats({}).then(({response}) => {this.setProps({chats: JSON.parse(response)})
 
         // chatsApi.createChat({
         //     title: "Second chat"

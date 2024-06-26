@@ -2,7 +2,7 @@ import Block from "../../lib/models/Block";
 import dateFormat from "../../helpers/dateFormat";
 
 type Chat = {
-  onSelectChat: any;
+  onSelectChat: undefined;
   name: string;
   youLast: boolean;
   date: string;
@@ -11,11 +11,11 @@ type Chat = {
 
 class ChatItem extends Block {
 
-  constructor(props: { onDeleteChat: any; onClick: any }) {
+  constructor(props: undefined ) {
     super({
       ...props,
       onHandlerDeleteChat: (e) => {
-        if (!!e) {
+        if (e) {
           e.preventDefault();
           e.stopPropagation()
           props.onDeleteChat(e)

@@ -1,4 +1,4 @@
-import {createCookie} from "../helpers/cookies";
+/* eslint-disable */
 
 enum METHOD {
   GET = 'GET',
@@ -79,11 +79,10 @@ class HTTPTransport {
     });
   };
   addInterceptor() {
-    let oldXHROpen = window.XMLHttpRequest.prototype.send;
+    const oldXHROpen = window.XMLHttpRequest.prototype.send;
     window.XMLHttpRequest.prototype.send = function(method, url, async, user, password) {
       // do something with the method, url and etc.
       this.addEventListener('load', function() {
-        console.log(this.status)
         if (this.status === 401) {
           sessionStorage.clear();
           window.router.go('/');
@@ -92,6 +91,8 @@ class HTTPTransport {
         }
       });
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       return oldXHROpen.apply(this, arguments);
     }
   }

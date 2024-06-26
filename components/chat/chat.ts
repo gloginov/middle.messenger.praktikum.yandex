@@ -9,7 +9,7 @@ import {ChatItem} from "./chat-item";
 // import socketConnection from "../../api/socket";
 
 type Chat = {
-  onSelectChat: any;
+  onSelectChat: undefined;
   name: string;
   youLast: boolean;
   date: string;
@@ -18,7 +18,7 @@ type Chat = {
 
 interface IProps {
   chats: () => Chat[],
-  onSelectChat: any;
+  onSelectChat: undefined;
 }
 
 class ChatList extends Block {
@@ -34,7 +34,6 @@ class ChatList extends Block {
   }
 
   protected render(): string {
-    const self = this;
     const { onSelectChat, onDeleteChat, chats} = this.props;
     return `
       <div class="chat-list">

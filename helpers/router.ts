@@ -1,11 +1,11 @@
 import Route from '../lib/Route';
 
 class Router {
-  private static __instance: any;
-  private routes: any[];
+  private static __instance: undefined;
+  private routes: undefined[];
   private history: History;
   private _currentRoute: null;
-  private readonly _rootQuery: any;
+  private readonly _rootQuery: undefined;
 
   constructor(rootQuery) {
     if (Router.__instance) {
@@ -30,6 +30,7 @@ class Router {
   start() {
     // Реагируем на изменения в адресной строке и вызываем перерисовку
     window.onpopstate = event => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this._onRoute(event.currentTarget.location.pathname);
     };
@@ -48,6 +49,7 @@ class Router {
     }
 
     if (this._currentRoute && this._currentRoute !== route) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       this._currentRoute.leave();
     }

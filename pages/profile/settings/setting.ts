@@ -39,7 +39,6 @@ export default class ProfileSetting extends isAuth {
 
   componentDidMount() {
     super.componentDidMount();
-    const self = this;
 
     authApi.getUser()
       .then(({response}) => self.setProps({profileData: JSON.parse(response)}))
