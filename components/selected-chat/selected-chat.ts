@@ -103,12 +103,12 @@ export class SelectedChat extends Block {
       
         {{#if showAddUserModal }}
           {{#> LayoutCentered showOverlay=true position="fixed"}}
-            {{#* inline "centerContent"}}
-              {{#> FormContainer}}
-                {{#*inline "formContent"}}
-                  {{ FormAddUsers onSubmit=onAddUserInChat }}
-                {{/inline}}
-              {{/FormContainer}}
+          {{#* inline "centerContent"}}
+           {{#> FormContainer}}
+            {{#*inline "formContent"}}
+            {{ FormAddUsers onSubmit=onAddUserInChat }}
+            {{/inline}}
+            {{/FormContainer}}
             {{/inline}}
           {{/LayoutCentered}}
         {{/if}}
