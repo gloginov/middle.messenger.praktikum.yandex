@@ -23,7 +23,7 @@ https://deploy--poetic-dasik-afa0e5.netlify.app/
 ### Страницы
 - `/chats` - страница с активным диалогом
 - `/many-chats`  - страница с большим количеством диалогов
-- `/registration` - регистрация
+- `/sign-up` - регистрация
 - `/login` - вход
 - `/nav` - разводящая
 - `/profile` - профиль

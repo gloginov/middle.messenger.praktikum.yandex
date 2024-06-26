@@ -19,7 +19,7 @@ export default class ProfileLoadImage extends Block {
           <div class="profile__content">
             <a href="#" data-page="profile/load-image" class="profile-avatar">
               <label for="">
-                {{> Avatar avatar="https://i.pravatar.cc/300" width="130px" height="130px" }}
+                {{{ Avatar avatar="https://i.pravatar.cc/300" width="130px" height="130px" }}}
                 <input type="file"  name="avatar">
                 <span class="profile-avatar__upload">
                   <span class="profile-avatar__upload-text">

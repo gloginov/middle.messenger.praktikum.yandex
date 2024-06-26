@@ -8,7 +8,7 @@ export class FormLoadImage extends Block {
 
   protected render(): string {
     return `
-      <form class="form__form form__form_load-image">
+    <form class="form__form form__form_load-image">
       <div class="form__content">
         {{> Text style="font-size:15px;font-weight:500;color:var(--color-black);" text="Загрузите файл" className="form__title" }}
 
@@ -20,11 +20,10 @@ export class FormLoadImage extends Block {
         </label>
       </div>
 
-    <div class="form__footer">
-      {{ Button text="Поменять" view="primary" width="full" data-page="chats"}}
-    </div>
-</form>
-
+      <div class="form__footer">
+        {{ Button text="Поменять" view="primary" width="full" data-page="chats"}}
+      </div>
+    </form> 
     `;
   }
 }

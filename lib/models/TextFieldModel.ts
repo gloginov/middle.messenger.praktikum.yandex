@@ -26,7 +26,7 @@ class TextFieldModel extends Block{
         showMessage:
           this.props.validate && (!this.props.validate(value).result && (value.length > 0)) ?
             this.props.validate(value).message
-            :
+              :
             this.props.message
         ,
         showError:

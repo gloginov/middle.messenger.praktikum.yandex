@@ -9,5 +9,6 @@
     position: fixed;
     background-color: var(--color-bg-secondary-opacity);
     inset: 0;
+    z-index: 1;
   }
 }

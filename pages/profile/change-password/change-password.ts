@@ -1,25 +1,23 @@
-import {validateEmail, validateName, validateLength, validatePhone, validateLogin} from "../../../helpers/validate";
+import {validateLength} from "../../../helpers/validate";
 import {formToJson} from "../../../helpers/formToJson";
 import {Callback} from "../../../types/types";
 import isAuth from "../../../middleware/isAuth";
 import {authApi} from "../../../api/auth";
 import {userApi} from "../../../api/user";
 
-export default class ProfileSetting extends isAuth {
+export default class ProfileChangePassword extends isAuth {
   constructor(props: Callback) {
     super({
       ...props,
-      validateEmail: validateEmail,
-      validateName: validateName,
       validateLength: validateLength,
-      validatePhone: validatePhone,
-      validateLogin: validateLogin,
       onClick: (e: Event) => {
         e.preventDefault();
         if (e.target instanceof Element) {
-          userApi.updateUser(formToJson(e.target))
-            .then(({response}) => {
-              window.router.go('/profile')
+          userApi.changePassword(formToJson(e.target))
+            .then(({response, status}) => {
+              if (status === 200) {
+                window.router.go('/profile')
+              }
             })
         }
       },
@@ -65,12 +63,8 @@ export default class ProfileSetting extends isAuth {
   
               {{#if profileData.email }}
                 <form class="profile-info">
-                  {{ TextFieldLabel label="Почта" type="text" value="${profileData.email}" name="email" className="profile-info-field inline " validate=validateEmail}}
-                  {{ TextFieldLabel label="Логин" type="text" value="${profileData.login}" name="login" className="profile-info-field inline " validate=validateLogin}}
-                  {{ TextFieldLabel label="Имя" type="text" value="${profileData.first_name}" name="first_name" className="profile-info-field inline " validate=validateName}}
-                  {{ TextFieldLabel label="Фамилия" type="text" value="${profileData.second_name}" name="second_name" className="profile-info-field inline " validate=validateName}}
-<!--                  {{ TextFieldLabel label="Имя в чате" type="text" value="ivanivanov" name="display_name" className="profile-info-field inline " validate=validateLogin}}-->
-                  {{ TextFieldLabel label="Телефон" type="tel" value="${profileData.phone}" name="phone" className="profile-info-field inline " validate=validatePhone}}
+                  {{ TextFieldLabel label="Старый пароль" type="password" name="oldPassword" className="profile-info-field inline " validate=validateLength}}
+                  {{ TextFieldLabel label="Новый пароль" type="password" name="newPassword" className="profile-info-field inline " validate=validateLength}}
     
                   <div class="profile-info__buttons">
                     {{ Button text="Сохранить" view="primary" width="full" type="submit"}}

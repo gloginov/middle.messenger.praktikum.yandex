@@ -81,8 +81,8 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   _componentDidMount() {
-    this._checkInDom();
     this.componentDidMount();
+    this._checkInDom();
   }
 
   componentDidMount() {}
@@ -93,31 +93,30 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
   }
 
-  private _isDeepEqual(obj1: any, obj2: any) {
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
+  private _isDeepEqual(a, b) {
+    if (a === b) {
+      return true;
+    }
 
-    if (keys1.length !== keys2.length) {
+    if (a == null || typeof(a) != "object" ||
+      b == null || typeof(b) != "object")
+    {
       return false;
     }
-    for (const key of keys1) {
-      if (!obj2.hasOwnProperty(key)) {
+
+    let propertiesInA = 0, propertiesInB = 0;
+    for (let property in a) {
+      propertiesInA += 1;
+    }
+    for (let property in b) {
+      propertiesInB += 1;
+      if (!(property in a) || !this._isDeepEqual(a[property], b[property])) {
         return false;
       }
-
-      if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
-        if (!this._isDeepEqual(obj1[key], obj2[key])) {
-          return false;
-        }
-      } else {
-        if (obj1[key] !== obj2[key]) {
-          return true;
-        }
-      }
     }
-    return true;
+    return propertiesInA == propertiesInB;
   }
-
+  
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
 
@@ -127,7 +126,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
-    return this._isDeepEqual(oldProps, newProps);
+    return !this._isDeepEqual(oldProps, newProps);
   }
 
   /**
@@ -225,7 +224,6 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
@@ -237,9 +235,6 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
         const oldTarget = {...target}
 
         target[prop] = value;
-
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },

@@ -13,6 +13,15 @@
       line-height: 28px;
       width: 28px;
       transform: rotate(180deg);
+
+      svg {
+        //vertical-align: middle;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+      }
     }
   }
 
@@ -24,47 +33,6 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-  }
-
-  &-avatar {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-    margin-bottom: 80px;
-
-    label {
-      input[type="file"] {
-        opacity: 0;
-        visibility: hidden;
-        z-index: -1;
-        position: absolute;
-        left: -1000px;
-      }
-    }
-
-    &__upload {
-      @include absolute-centered;
-
-      background-color: rgb(0 0 0 / 50%);
-      width: 100%;
-      height: 100%;
-      color: var(--color-white);
-      font-weight: 500;
-      flex-flow: row;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      display: none;
-    }
-
-    &:hover {
-      .profile-avatar__upload {
-        display: flex;
-      }
-    }
   }
 }
 

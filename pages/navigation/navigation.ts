@@ -13,25 +13,25 @@ export default class NavigationPage extends Block {
     
         <ul class="navigation-list">
           <li>
-              <a href="#" data-page="login">Форма входа</a>
+              <a href="/login">Форма входа</a>
           </li>
           <li>
-              <a href="#" data-page="registration">Форма регистрации</a>
+              <a href="/sign-up">Форма регистрации</a>
           </li>
           <li>
-              <a href="#" data-page="chats">Чаты</a>
+              <a href="/messenger">Чаты</a>
           </li>
           <li>
-              <a href="#" data-page="profile">Профиль</a>
+              <a href="/profile">Профиль</a>
           </li>
           <li>
-              <a href="#" data-page="setting">Настройки</a>
+              <a href="/setting">Настройки</a>
           </li>
           <li>
-              <a href="#" data-page="loadimage">Загрузка картинки</a>
+              <a href="/loadimage">Загрузка картинки</a>
           </li>
           <li>
-              <a href="#" data-page="error">Страница ошибок</a>
+              <a href="/error">Страница ошибок</a>
           </li>
         </ul>
       </nav>

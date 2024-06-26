@@ -4,12 +4,14 @@ import Block from "../../../lib/models/Block";
 
 class Button extends Block {
   constructor(props: ButtonType) {
+
     super({
       ...props
     });
   }
 
   protected init(): void {
+    super.init()
     this.props.events = {
       click: this.props.onClick
     }

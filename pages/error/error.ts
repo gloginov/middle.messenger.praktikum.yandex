@@ -6,7 +6,7 @@ export default class ErrorPage extends Block {
     super({
       code: '404',
       message: "Не туда попали",
-      backLink: 'chats',
+      backLink: 'messenger',
       backLinkText: "Назад к чатам"
     });
   }
