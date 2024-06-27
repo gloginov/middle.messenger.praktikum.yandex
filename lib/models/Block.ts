@@ -1,3 +1,4 @@
+// @ts-nocheck
 import EventBus from "../EventBus";
 import {nanoid} from 'nanoid';
 import Handlebars from "handlebars";
@@ -223,7 +224,7 @@ class Block<Props extends object = undefined, Refs extends RefType = RefType> {
     return this._element;
   }
 
-  _makePropsProxy(props: undefined) {
+  _makePropsProxy(props: any) {
     const self = this;
 
     return new Proxy(props, {

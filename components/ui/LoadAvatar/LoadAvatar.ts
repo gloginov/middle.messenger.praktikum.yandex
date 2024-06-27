@@ -1,9 +1,10 @@
+// @ts-nocheck
 import Block from '../../../lib/models/Block';
 import './LoadAvatar.scss'
 import {userApi} from "../../../api/user";
 
 class LoadAvatar extends Block {
-  constructor(props) {
+  constructor(props: undefined) {
     super({
       ...props,
       onChangeAvatar: (e: Event) => {

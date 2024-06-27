@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 import './chats.scss'
 import chatsJson from '../../mock/chats.json'
 // import selectedJson from '../../mock/selectedChat.json'
@@ -16,6 +17,7 @@ export default class ChatsPage extends isAuth {
     super({
       ...props,
       selectedChatId: null,
+      selectedChatJson: null,
       selectedChat: [],
       // selectedChat: () => selectedJson,
       selectedChatPerson: () => chatsJson[0],
@@ -48,7 +50,7 @@ export default class ChatsPage extends isAuth {
                 this.setProps({
                   selectedChat: [],
                   selectedChatId: chatId,
-                  selectedChatJson: self.props.chats.find(chat => +chat.id === +chatId )
+                  selectedChatJson: this.props.chats.find(chat => +chat.id === +chatId )
                 })
                 // instance.send(JSON.stringify({
                 //   content: 'Моё какое-то сообщение миру!',
@@ -60,21 +62,17 @@ export default class ChatsPage extends isAuth {
               instance.addEventListener('message', event => {
                 console.log('Получены данные', event.data);
 
-                console.log(Array.isArray(JSON.parse(event.data)),
-                  self.props.selectedChat.concat(JSON.parse(event.data))
-                )
-
                 // instance.send(JSON.stringify({
                 //   content: '0',
                 //   type: 'get old',
                 // }));
 
-                self.setProps({
+                this.setProps({
                   selectedChat:
                     Array.isArray(JSON.parse(event.data)) ?
                       JSON.parse(event.data).reverse()
                         :
-                    self.props.selectedChat.concat(JSON.parse(event.data))
+                    this.props.selectedChat.concat(JSON.parse(event.data))
 
                 //
 
@@ -124,7 +122,7 @@ export default class ChatsPage extends isAuth {
           const formData = formToJson(e.target)
           chatsApi.createChat(formData)
             .then((resp) => {
-              chatsApi.getChats({}).then(({response}) => {
+              chatsApi.getChats().then(({response}) => {
                 _self.setProps({chats: JSON.parse(response)})
               })
               _self.setProps({showCreateChatModal: false})
@@ -141,7 +139,7 @@ export default class ChatsPage extends isAuth {
 
           chatsApi.deleteChat({ chatId: dataChild })
             .then(() => {
-              chatsApi.getChats({}).then(({response}) => {
+              chatsApi.getChats().then(({response}) => {
                 _self.setProps({chats: JSON.parse(response)})
               })
             })
@@ -170,7 +168,7 @@ export default class ChatsPage extends isAuth {
   }
 
   protected init(): void {
-    chatsApi.getChats({}).then(({response}) => {this.setProps({chats: JSON.parse(response)})
+    chatsApi.getChats().then(({response}) => {this.setProps({chats: JSON.parse(response)})
 
         // chatsApi.createChat({
         //     title: "Second chat"

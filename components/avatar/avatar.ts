@@ -1,14 +1,7 @@
 import './avatar.scss'
 import Block from '../../lib/models/Block';
-import {resourcesApi} from "../../api/resources";
 
 class Avatar extends Block {
-  constructor(props) {
-    super({
-      ...props,
-    });
-  }
-
   protected render(): string {
 
     const { avatar } = this.props;

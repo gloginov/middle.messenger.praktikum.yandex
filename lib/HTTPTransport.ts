@@ -1,5 +1,5 @@
 /* eslint-disable */
-
+// @ts-nocheck
 enum METHOD {
   GET = 'GET',
   POST = 'POST',

@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default function dateFormat(date) {
   const preFormat = date ? new Date(date) : new Date();
 

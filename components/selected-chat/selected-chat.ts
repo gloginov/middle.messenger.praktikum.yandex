@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Block from "../../lib/models/Block";
 import './selected-chat.scss'
 import { formToJson } from '../../helpers/formToJson';

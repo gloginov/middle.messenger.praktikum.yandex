@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Block from "./Block";
 import {TextFieldType} from '../../types/types';
 

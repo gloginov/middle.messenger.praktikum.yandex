@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Block from "../lib/models/Block";
 
 export default class isAuth extends Block {

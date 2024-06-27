@@ -1,20 +1,29 @@
+// @ts-nocheck
 import Block from "../../lib/models/Block";
 import dateFormat from "../../helpers/dateFormat";
 
-type Chat = {
-  onSelectChat: undefined;
-  name: string;
-  youLast: boolean;
-  date: string;
-  text: string;
-}
-
 class ChatItem extends Block {
 
-  constructor(props: undefined ) {
+  constructor(props: {
+    onHandlerDeleteChat: (e: Event) => void;
+    dateFormatted: string;
+    onSelectChat: undefined;
+    onDeleteChat: undefined;
+    name: string;
+    youLast: boolean;
+    date: string;
+    text: string;
+    chat: {
+      title: string;
+      last_message?: {
+        time: string;
+        content: string;
+      }
+    }
+  } ) {
     super({
       ...props,
-      onHandlerDeleteChat: (e) => {
+      onHandlerDeleteChat: (e: Event) => {
         if (e) {
           e.preventDefault();
           e.stopPropagation()

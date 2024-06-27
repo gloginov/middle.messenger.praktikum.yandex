@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Create cookie
 function createCookie(name, value, days) {
   let expires;

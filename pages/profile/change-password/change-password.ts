@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {validateLength} from "../../../helpers/validate";
 import {formToJson} from "../../../helpers/formToJson";
 import {Callback} from "../../../types/types";

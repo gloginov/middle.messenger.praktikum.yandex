@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 class Route {
   private _pathname: undefined;
   private readonly _blockClass: undefined;

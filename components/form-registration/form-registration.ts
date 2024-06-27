@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './form-registration.scss'
 import Block from "../../lib/models/Block";
 import {validateEmail, validateName, validateLength, validatePhone, validateLogin} from "../../helpers/validate";

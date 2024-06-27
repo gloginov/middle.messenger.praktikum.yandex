@@ -2,17 +2,6 @@ type Callback = {
   onClick?: () => void
 }
 
-type UserType = {
-  id: number,
-  first_name: string,
-  second_name: string,
-  display_name: string,
-  phone: string,
-  login: string,
-  avatar: string | null,
-  email: string
-}
-
 type SelectedChatPersonType = {
   name: string;
   avatar: string;

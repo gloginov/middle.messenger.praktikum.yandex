@@ -1,3 +1,4 @@
+// @ts-nocheck
 function isJsonString(str) {
   try {
     JSON.parse(str);

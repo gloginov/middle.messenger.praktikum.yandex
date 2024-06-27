@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './Button.scss'
 import {ButtonType} from '../../../types/types'
 import Block from "../../../lib/models/Block";

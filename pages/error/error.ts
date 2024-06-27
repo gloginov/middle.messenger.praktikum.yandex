@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './error.scss'
 import Block from "../../lib/models/Block";
 

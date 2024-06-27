@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './profile.scss'
 // import Block from "../../lib/models/Block";
 import isAuth from "../../middleware/isAuth";

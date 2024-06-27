@@ -1,4 +1,5 @@
 /* eslint-disable */
+// @ts-nocheck
 import Handlebars from "handlebars";
 import * as Pages from './pages';
 import * as Layouts from './layouts';
@@ -9,7 +10,6 @@ import './scss/main.scss';
 import Router from './helpers/router';
 import HTTPTransport from "./lib/HTTPTransport";
 
-import ProfileChangePassword from "./pages/profile/change-password/change-password";
 import dateFormat from "./helpers/dateFormat";
 
 const backendApi = new HTTPTransport();

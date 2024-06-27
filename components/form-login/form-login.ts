@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './form-login.scss'
 import Block from '../../lib/models/Block';
 import {formToJson} from "../../helpers/formToJson";

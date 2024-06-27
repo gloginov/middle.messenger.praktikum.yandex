@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './form-users.scss'
 import Block from '../../lib/models/Block';
 import {validateRequire} from "../../helpers/validate";

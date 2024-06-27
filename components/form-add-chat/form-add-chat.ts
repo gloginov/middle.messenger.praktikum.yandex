@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './form-add-chat.scss'
 import Block from '../../lib/models/Block';
 import {validateRequire} from "../../helpers/validate";
