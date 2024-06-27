@@ -8,20 +8,17 @@
   },
   "compilerOptions": {
     "outDir": "dist",
-    "target": "esnext",
+    "target": "es2017",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "declaration": false,
-//    "module": "commonjs",
+    "module": "commonjs",
     "strictNullChecks": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "module": "es2022",
-    "moduleResolution": "Node",
-    "types": ["vite/client"]
+    "skipLibCheck": true
   },
   "exclude": ["node_modules"]
 }
