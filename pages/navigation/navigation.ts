@@ -13,7 +13,7 @@ export default class NavigationPage extends Block {
     
         <ul class="navigation-list">
           <li>
-              <a href="/login">Форма входа</a>
+              <a href="/">Форма входа</a>
           </li>
           <li>
               <a href="/sign-up">Форма регистрации</a>
@@ -26,9 +26,6 @@ export default class NavigationPage extends Block {
           </li>
           <li>
               <a href="/setting">Настройки</a>
-          </li>
-          <li>
-              <a href="/loadimage">Загрузка картинки</a>
           </li>
           <li>
               <a href="/error">Страница ошибок</a>

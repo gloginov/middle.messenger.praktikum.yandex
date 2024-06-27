@@ -101,7 +101,7 @@ router
   .use('/messenger', Pages.ChatsPage)
   .use('/nav', Pages.NavigationPage)
   .use('/profile', Pages.ProfilePage)
-  .use('/loadimage', Pages.ProfileLoadImage)
+  // .use('/loadimage', Pages.ProfileLoadImage)
   .use('*', Pages.ErrorPage)
   .start();
 

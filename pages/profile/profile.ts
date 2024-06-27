@@ -28,7 +28,7 @@ export default class ProfilePage extends isAuth {
     super.componentDidMount();
 
     authApi.getUser()
-      .then(({response}) => self.setProps({profileData: JSON.parse(response)}))
+      .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
   }
 
   protected render(): string {
