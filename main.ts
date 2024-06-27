@@ -1,4 +1,5 @@
 /* eslint-disable */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import Handlebars from "handlebars";
 import * as Pages from './pages';

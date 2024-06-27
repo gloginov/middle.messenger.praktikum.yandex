@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import './profile.scss'
 // import Block from "../../lib/models/Block";

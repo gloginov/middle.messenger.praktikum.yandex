@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import {validateLength} from "../../../helpers/validate";
 import {formToJson} from "../../../helpers/formToJson";

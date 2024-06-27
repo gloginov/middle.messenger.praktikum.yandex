@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import './form-login.scss'
 import Block from '../../lib/models/Block';

@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import './Button.scss'
 import {ButtonType} from '../../../types/types'

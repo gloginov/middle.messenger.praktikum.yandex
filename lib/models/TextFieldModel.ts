@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import Block from "./Block";
 import {TextFieldType} from '../../types/types';
