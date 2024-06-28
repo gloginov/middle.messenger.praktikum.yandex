@@ -12,6 +12,10 @@ async function socketConnection({ USER_ID, CHAT_ID }: {USER_ID: string, CHAT_ID:
 
       return socketInstance
     })
+    .catch((error) => {
+      // window.router.go('error')
+      console.error(error.response)
+    })
 
 }
 

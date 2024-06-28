@@ -21,6 +21,10 @@ export default class ProfileChangePassword extends isAuth {
                 window.router.go('/profile')
               }
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       },
       onClickBack: (e: Event) => {
@@ -41,7 +45,11 @@ export default class ProfileChangePassword extends isAuth {
     super.componentDidMount();
 
     authApi.getUser()
-      .then(({response}) => self.setProps({profileData: JSON.parse(response)}))
+      .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
   }
 
   protected render(): string {

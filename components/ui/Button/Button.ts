@@ -8,7 +8,17 @@ class Button extends Block {
   constructor(props: ButtonType) {
 
     super({
-      ...props
+      ...props,
+      onClick: (e: Event) => {
+        console.log(e, props["data-page"])
+        if (!props["data-page"]) {
+          if (props.onClick) {
+            props.onClick(e)
+          }
+        } else {
+          window.router.go(props["data-page"])
+        }
+      }
     });
   }
 
@@ -40,7 +50,7 @@ class Button extends Block {
           {{# if iconRigth}} {{{getPartial iconRigth}}} {{/if}}
         </a>
       {{else if data-page}}
-        <a href="#"
+        <button 
           class="
             custom-button
             custom-button_{{ view }}

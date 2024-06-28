@@ -17,7 +17,6 @@ export class FormLogin extends Block {
           authApi.signIn(formData)
             .then((resp) => {
               const responseJSON = isJsonString(resp.response) ? JSON.parse(resp.response) : null;
-console.log(resp)
               if (responseJSON && responseJSON.reason) {
                 console.error(responseJSON.reason)
                 switch (responseJSON.reason) {
@@ -35,8 +34,16 @@ console.log(resp)
                       sessionStorage.setItem('userId', responseJSON.id)
                       window.router.go('/messenger')
                     })
+                    .catch((error) => {
+                      // window.router.go('error')
+                      console.error(error.response)
+                    })
                 }
               }
+            })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
             })
         }
       }
@@ -45,7 +52,8 @@ console.log(resp)
 
   protected init(): void {
     if (sessionStorage.getItem('userId')) {
-      window.location.href = window.location.origin + '/messenger'
+      // window.location.href = window.location.origin + '/messenger'
+      window.router.go('/messenger')
     }
 
     this.props.events = {
@@ -66,7 +74,7 @@ console.log(resp)
     
         <div class="form__footer">
           {{ Button text="Войти" view="primary" width="full" type="submit"}}
-          {{ Button text="Нет аккаунта?" view="clear" width="full" size="small" href="sign-up"}}
+          {{ Button text="Нет аккаунта?" view="clear" width="full" size="small" data-page="/sign-up"}}
         </div>
     </form>
     `

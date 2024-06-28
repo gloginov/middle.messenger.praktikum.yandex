@@ -37,6 +37,10 @@ export class FormRegistration extends Block {
                 window.router.go('/messenger')
               }
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       }
     });
@@ -65,7 +69,7 @@ export class FormRegistration extends Block {
     
         <div class="form__footer">
           {{ Button text="Зарегистрироваться" view="primary" width="full" type="submit"}}
-          {{ Button text="Войти" view="clear" width="full" size="small"  href="/login"}}
+          {{ Button text="Войти" view="clear" width="full" size="small"  data-page="/"}}
         </div>
       </form>
     `;

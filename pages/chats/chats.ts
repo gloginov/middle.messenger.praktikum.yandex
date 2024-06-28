@@ -67,13 +67,13 @@ export default class ChatsPage extends isAuth {
                 //   content: '0',
                 //   type: 'get old',
                 // }));
-
+                const data = JSON.parse(event.data);
                 this.setProps({
                   selectedChat:
-                    Array.isArray(JSON.parse(event.data)) ?
-                      JSON.parse(event.data).reverse()
+                    Array.isArray(data) ?
+                      data.reverse()
                         :
-                    this.props.selectedChat.concat(JSON.parse(event.data))
+                    this.props.selectedChat.concat(data)
 
                 //
 
@@ -100,6 +100,10 @@ export default class ChatsPage extends isAuth {
                 console.log('Ошибка', event.message);
               });
 
+            })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
             })
 
 
@@ -128,6 +132,10 @@ export default class ChatsPage extends isAuth {
               })
               _self.setProps({showCreateChatModal: false})
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       },
       onDeleteChat: (e: Event) => {
@@ -143,6 +151,10 @@ export default class ChatsPage extends isAuth {
               chatsApi.getChats().then(({response}) => {
                 _self.setProps({chats: JSON.parse(response)})
               })
+            })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
             })
         }
       },
@@ -169,8 +181,8 @@ export default class ChatsPage extends isAuth {
   }
 
   protected init(): void {
-    chatsApi.getChats().then(({response}) => {this.setProps({chats: JSON.parse(response)})
-
+    chatsApi.getChats()
+      .then(({response}) => {this.setProps({chats: JSON.parse(response)})
         // chatsApi.createChat({
         //     title: "Second chat"
         //   }
@@ -188,7 +200,10 @@ export default class ChatsPage extends isAuth {
         //
         //   })
       })
-
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
   }
 
   protected render(): string {
@@ -207,7 +222,7 @@ export default class ChatsPage extends isAuth {
         {{/if}}
         {{#> LayoutGrid  }}      
           {{#*inline "leftContent" }}
-            {{> ChatNavigation}}
+            {{ ChatNavigation}}
             {{ ChatList 
                 chats=chats 
                 onSelectChat=onSelectChat 

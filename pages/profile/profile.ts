@@ -15,6 +15,10 @@ export default class ProfilePage extends isAuth {
             window.location.href = window.location.origin + '/'
             sessionStorage.clear()
           })
+          .catch((error) => {
+            // window.router.go('error')
+            console.error(error.response)
+          })
       },
       onClickBack: (e: Event) => {
         e.preventDefault();
@@ -29,6 +33,10 @@ export default class ProfilePage extends isAuth {
 
     authApi.getUser()
       .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
   }
 
   protected render(): string {
@@ -57,8 +65,8 @@ export default class ProfilePage extends isAuth {
                   {{ TextFieldLabel label="Телефон" type="text" errorMessage="" value="${profileData.phone}" name="phone" className="profile-info-field inline profile-info-field_unactive"}}
   
                   <div class="profile-info__buttons">
-                    {{ Button text="Изменить данные" view="secondary" width="full" href="/setting"}}
-                    {{ Button text="Изменить пароль" view="secondary" width="full" href="/setting/password"}}
+                    {{ Button text="Изменить данные" view="secondary" width="full" data-page="/setting"}}
+                    {{ Button text="Изменить пароль" view="secondary" width="full" data-page="/setting/password"}}
                     {{ Button text="Выйти" view="alert" width="full" onClick=onClick}}
                   </div>
                 </div>

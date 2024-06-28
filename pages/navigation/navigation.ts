@@ -3,7 +3,21 @@ import Block from "../../lib/models/Block";
 
 export default class NavigationPage extends Block {
   constructor() {
-    super();
+    super({
+      onClick: (e: Event) => {
+        if (e.target.dataset.page) {
+          e.preventDefault();
+          window.router.go(e.target.dataset.page)
+        }
+      }
+    });
+  }
+
+  protected init(): void {
+    super.init()
+    this.props.events = {
+      click: this.props.onClick
+    }
   }
 
   protected render(): string {
@@ -13,19 +27,19 @@ export default class NavigationPage extends Block {
     
         <ul class="navigation-list">
           <li>
-              <a href="/">Форма входа</a>
+              <a href="#" data-page="/">Форма входа</a>
           </li>
           <li>
-              <a href="/sign-up">Форма регистрации</a>
+              <a href="#" data-page="/sign-up">Форма регистрации</a>
           </li>
           <li>
-              <a href="/messenger">Чаты</a>
+              <a href="#" data-page="/messenger">Чаты</a>
           </li>
           <li>
-              <a href="/profile">Профиль</a>
+              <a href="#" data-page="/profile">Профиль</a>
           </li>
           <li>
-              <a href="/setting">Настройки</a>
+              <a href="#" data-page="/setting">Настройки</a>
           </li>
           <li>
               <a href="/error">Страница ошибок</a>

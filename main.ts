@@ -62,7 +62,8 @@ Object.entries(Components).forEach(([ name, component ]) => {
     'TextFieldLabel',
     'Avatar',
     'LoadAvatar',
-    'FormContainer'
+    'FormContainer',
+    'ChatNavigation'
   ].includes(name)) {
     requireJsComponent(name, component);
     return;

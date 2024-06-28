@@ -32,6 +32,10 @@ export default class ProfileSetting extends isAuth {
             .then(({response}) => {
               window.router.go('/profile')
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       },
       onClickBack: (e: Event) => {
@@ -55,6 +59,10 @@ export default class ProfileSetting extends isAuth {
 
     authApi.getUser()
       .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
   }
 
   protected render(): string {

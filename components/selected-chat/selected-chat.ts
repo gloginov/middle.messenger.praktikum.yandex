@@ -69,6 +69,10 @@ export class SelectedChat extends Block {
             .then((resp) => {
 
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       },
       onDeleteUserInChat: (e: Event) => {
@@ -82,6 +86,10 @@ export class SelectedChat extends Block {
           })
             .then((resp) => {
 
+            })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
             })
         }
       }

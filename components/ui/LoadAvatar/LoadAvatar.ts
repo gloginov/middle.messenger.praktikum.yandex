@@ -17,6 +17,10 @@ class LoadAvatar extends Block {
             .then(({response}) => {
               window.router.go('/profile')
             })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
       }
     });

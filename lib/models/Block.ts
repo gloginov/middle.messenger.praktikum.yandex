@@ -247,11 +247,17 @@ class Block<Props extends object = undefined, Refs extends RefType = RefType> {
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    if (this.getContent()!.dataset.showdisplay) {
+      this.getContent()!.style.display = this.getContent()!.dataset.showdisplay;
+    } else {
+      this.getContent()!.style.display = "block";
+    }
   }
 
   hide() {
     this.getContent()!.style.display = "none";
+
+    this.getContent()?.remove()
   }
 }
 

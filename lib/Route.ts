@@ -38,13 +38,15 @@ class Route {
   }
 
   render() {
-    if (!this._block) {
+    // if (!this._block) {
       this._block = new this._blockClass({});
       this._renderDom(this._props.rootQuery, this._block);
       return;
-    }
-    // @ts-ignore @ts-expect-error
-    this._block.show();
+    // }
+
+    // console.log(!this._block)
+    // // @ts-ignore @ts-expect-error
+    // this._block.show();
   }
 }
 
