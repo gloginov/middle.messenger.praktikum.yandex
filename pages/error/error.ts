@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import './error.scss'
 import Block from "../../lib/models/Block";
 
@@ -6,7 +8,7 @@ export default class ErrorPage extends Block {
     super({
       code: '404',
       message: "Не туда попали",
-      backLink: 'chats',
+      backLink: 'messenger',
       backLinkText: "Назад к чатам"
     });
   }

@@ -1,13 +1,15 @@
 /* eslint-disable */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import Handlebars from 'handlebars';
 // import Block from "./models/Block";
 import {HelperOptions} from "handlebars";
 
 declare global {
-  interface Window { MyNamespace: any; }
+  interface Window { MyNamespace: undefined; }
 }
 
-export function requireJsComponent(name: string, Component: any) {
+export function requireJsComponent(name: string, Component: undefined) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`;
   }

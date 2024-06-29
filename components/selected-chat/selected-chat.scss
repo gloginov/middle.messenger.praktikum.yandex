@@ -102,6 +102,13 @@
     min-width: 28px;
     line-height: 28px;
     margin-left: 10px;
+
+    svg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   &__send-message {

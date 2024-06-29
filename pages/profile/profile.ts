@@ -1,50 +1,76 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import './profile.scss'
-import Block from "../../lib/models/Block";
+// import Block from "../../lib/models/Block";
+import isAuth from "../../middleware/isAuth";
+import {authApi} from "../../api/auth";
 
-export default class ProfilePage extends Block {
+export default class ProfilePage extends isAuth {
   constructor() {
-    super();
+    super({
+      onClick: (e: Event) => {
+        e.preventDefault();
+        authApi.logout()
+          .then(() => {
+            window.location.href = window.location.origin + '/'
+            sessionStorage.clear()
+          })
+          .catch((error) => {
+            // window.router.go('error')
+            console.error(error.response)
+          })
+      },
+      onClickBack: (e: Event) => {
+        e.preventDefault();
+        window.history.back()
+      },
+      profileData: {}
+    });
+  }
+
+  componentDidMount() {
+    super.componentDidMount();
+
+    authApi.getUser()
+      .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
   }
 
   protected render(): string {
+    const { profileData } = this.props;
+
     return `
       {{#> LayoutGrid}}
         <div   class="profile">
           {{#*inline "leftContent" }}
             <div class="profile__back">
-              {{ Button iconLeft="Arrow" view="primary" form="round" className="profile__go-back" }}
+              {{ Button iconLeft="Arrow" view="primary" form="round" className="profile__go-back" onClick=onClickBack  }}
             </div>
           {{/inline}}
     
           {{#*inline "rightContent" }}
             <div class="profile__content">
-              <a href="#" data-page="profile/load-image" class="profile-avatar">
-                <label for="">
-                  {{> Avatar avatar="https://i.pravatar.cc/300" width="130px" height="130px" }}
-                  <input type="file" name="avatar">
-                  <span class="profile-avatar__upload">
-                    <span class="profile-avatar__upload-text">
-                      Upload image...
-                    </span>
-                  </span>
-                </label>
-              </a>
-
-              <div class="profile-info">
-                {{ TextFieldLabel label="Почта" type="text" errorMessage="" value="ivanivanov@mm.rr" name="email" className="profile-info-field inline profile-info-field_unactive"}}
-                {{ TextFieldLabel label="Логин" type="text" errorMessage="" value="ivanivanov" name="login" className="profile-info-field inline profile-info-field_unactive"}}
-                {{ TextFieldLabel label="Имя" type="text" errorMessage="" value="Василий" name="first_name" className="profile-info-field inline profile-info-field_unactive"}}
-                {{ TextFieldLabel label="Фамилия" type="text" errorMessage="" value="Пупкин" name="second_name" className="profile-info-field inline profile-info-field_unactive"}}
-                {{ TextFieldLabel label="Имя в чате" type="text" errorMessage="" value="ivanivanov" name="display_name" className="profile-info-field inline profile-info-field_unactive"}}
-                {{ TextFieldLabel label="Телефон" type="text" errorMessage="" value="+7 (999) 999 99 99" name="phone" className="profile-info-field inline profile-info-field_unactive"}}
-
-                <div class="profile-info__buttons">
-                  {{ Button text="Изменить данные" view="secondary" width="full" data-page="setting"}}
-                  {{ Button text="Изменить пароль" view="secondary" width="full" data-page="chats"}}
-                  {{ Button text="Выйти" view="alert" width="full" data-page="chats"}}
+              {{{ LoadAvatar avatar="${profileData.avatar}" }}}
+               
+              {{#if profileData.email }}
+                <div class="profile-info">
+                  {{ TextFieldLabel label="Почта" type="text" errorMessage="" value="${profileData.email}" name="email" className="profile-info-field inline profile-info-field_unactive"}}
+                  {{ TextFieldLabel label="Логин" type="text" errorMessage="" value="${profileData.login}" name="login" className="profile-info-field inline profile-info-field_unactive"}}
+                  {{ TextFieldLabel label="Имя" type="text" errorMessage="" value="${profileData.first_name}" name="first_name" className="profile-info-field inline profile-info-field_unactive"}}
+                  {{ TextFieldLabel label="Фамилия" type="text" errorMessage="" value="${profileData.second_name}" name="second_name" className="profile-info-field inline profile-info-field_unactive"}}
+<!--                  {{ TextFieldLabel label="Имя в чате" type="text" errorMessage="" value="ivanivanov" name="display_name" className="profile-info-field inline profile-info-field_unactive"}}-->
+                  {{ TextFieldLabel label="Телефон" type="text" errorMessage="" value="${profileData.phone}" name="phone" className="profile-info-field inline profile-info-field_unactive"}}
+  
+                  <div class="profile-info__buttons">
+                    {{ Button text="Изменить данные" view="secondary" width="full" data-page="/setting"}}
+                    {{ Button text="Изменить пароль" view="secondary" width="full" data-page="/setting/password"}}
+                    {{ Button text="Выйти" view="alert" width="full" onClick=onClick}}
+                  </div>
                 </div>
-
-              </div>
+              {{/if}}
 
             </div>
           {{/inline}}

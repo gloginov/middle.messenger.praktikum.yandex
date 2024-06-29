@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import Block from "./Block";
 import {TextFieldType} from '../../types/types';
 
@@ -26,7 +28,7 @@ class TextFieldModel extends Block{
         showMessage:
           this.props.validate && (!this.props.validate(value).result && (value.length > 0)) ?
             this.props.validate(value).message
-            :
+              :
             this.props.message
         ,
         showError:

@@ -2,7 +2,6 @@ type Callback = {
   onClick?: () => void
 }
 
-
 type SelectedChatPersonType = {
   name: string;
   avatar: string;
@@ -44,4 +43,15 @@ type TextFieldType = {
   required: boolean;
 }
 
-export { Callback, SelectedChatPersonType, SelectedChatType, ButtonType, TextFieldType }
+type APIError = {
+  reason: string;
+};
+
+export {
+  Callback,
+  SelectedChatPersonType,
+  SelectedChatType,
+  ButtonType,
+  TextFieldType,
+  APIError
+}

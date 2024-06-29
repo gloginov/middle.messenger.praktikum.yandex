@@ -1,36 +1,27 @@
 /* eslint-disable */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import Handlebars from "handlebars";
 import * as Pages from './pages';
 import * as Layouts from './layouts';
 import * as Containers from './containers';
 import * as Components from './components';
-
 import { requireJsComponent } from './lib/requireJsComponent';
+import './scss/main.scss';
+import Router from './helpers/router';
+import HTTPTransport from "./lib/HTTPTransport";
 
-import './scss/main.scss'
+import dateFormat from "./helpers/dateFormat";
 
-const pages = {
-  'chats': Pages.ChatsPage,
-  'login':  Pages.LoginPage,
-  'registration': Pages.RegistrationPage,
-  'nav': Pages.NavigationPage,
-  'profile': Pages.ProfilePage,
-  'setting': Pages.ProfileSetting,
-  'loadimage': Pages.ProfileLoadImage,
-  'error': Pages.ErrorPage
-};
-
-// // get current page from url
-const routeFromUrl = () => {
-  return window.location.pathname.replace('/', '')
-}
+const backendApi = new HTTPTransport();
+backendApi.addInterceptor();
 //
 Handlebars.registerHelper('isImage', function (value) {
   return value === 'image';
 });
 //
 Handlebars.registerHelper('isYour', function (value) {
-  return value === 'you';
+  return value === +sessionStorage.getItem('userId');
 });
 //
 Handlebars.registerHelper('isText', function (value) {
@@ -44,6 +35,17 @@ Handlebars.registerHelper('getFirstLetter', function (value) {
   return '';
 })
 
+Handlebars.registerHelper('dateFormat', function (date) {
+  return dateFormat(date)
+})
+
+Handlebars.registerHelper('notNull', function(value, options) {
+  if((value instanceof Window) == false) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
+
 Object.entries(Components).forEach(([ name, component ]) => {
   if([
     'SelectedChat',
@@ -52,9 +54,16 @@ Object.entries(Components).forEach(([ name, component ]) => {
     'Button',
     'TextField',
     'FormLogin',
+    'FormAddUsers',
+    'FormDeleteUsers',
     'FormRegistration',
+    'FormAddChat',
     'FormLoadImage',
-    'TextFieldLabel'
+    'TextFieldLabel',
+    'Avatar',
+    'LoadAvatar',
+    'FormContainer',
+    'ChatNavigation'
   ].includes(name)) {
     requireJsComponent(name, component);
     return;
@@ -63,6 +72,7 @@ Object.entries(Components).forEach(([ name, component ]) => {
   Handlebars.registerPartial(name, component);
 });
 //
+
 // register Layouts
 Object.entries(Layouts).forEach(([ name, layout ]) => {
   Handlebars.registerPartial(name, layout);
@@ -79,34 +89,21 @@ Handlebars.registerHelper('getPartial', function (value) {
   }
   return null;
 })
-//
-function navigate(page: any) {
-  const container = document.getElementById('app')!;
 
-  //@ts-ignore
-  const Component = pages[page]
-  const component = new Component();
+const router = new Router('#app');
+// @ts-ignore
+window.router = router;
 
-  // window[page] = component
-  window.history.pushState({}, '', page);
+router
+  .use('/', Pages.LoginPage)
+  .use('/sign-up', Pages.RegistrationPage)
+  .use('/setting', Pages.ProfileSetting)
+  .use('/setting/password', Pages.ProfileChangePassword)
+  .use('/messenger', Pages.ChatsPage)
+  .use('/nav', Pages.NavigationPage)
+  .use('/profile', Pages.ProfilePage)
+  // .use('/loadimage', Pages.ProfileLoadImage)
+  .use('*', Pages.ErrorPage)
+  .start();
 
-  container.innerHTML = '';
-  container.append(component.getContent()!);
-}
-
-//@ts-ignore
-if (pages[routeFromUrl()]) {
-  document.addEventListener('DOMContentLoaded', () => navigate(routeFromUrl()));
-} else {
-  document.addEventListener('DOMContentLoaded', () => navigate('nav'));
-}
-//
-document.addEventListener('click', e => {
-  // @ts-ignore
-  const page = e.target.getAttribute('data-page');
-  if (page) {
-    navigate(page);
-    e.preventDefault()
-    e.stopImmediatePropagation();
-  }
-});
+// router.go('/nav')

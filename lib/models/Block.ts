@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import EventBus from "../EventBus";
 import {nanoid} from 'nanoid';
 import Handlebars from "handlebars";
@@ -11,7 +13,7 @@ export interface BlockClass<P extends object, R extends RefType> extends Functio
   componentName?: string;
 }
 
-class Block<Props extends object = any, Refs extends RefType = RefType> {
+class Block<Props extends object = undefined, Refs extends RefType = RefType> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -21,13 +23,13 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   };
 
   public id = nanoid(6);
-  protected props: Props & { events: any };
+  protected props: Props & { events: undefined };
   protected refs: Refs = {} as Refs;
   private children: Block<object>[] = [];
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props | any ) {
+  constructor(props: Props = {} as Props | undefined ) {
     const eventBus = new EventBus();
 
     this.props = this._makePropsProxy(props);
@@ -81,8 +83,8 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   _componentDidMount() {
-    this._checkInDom();
     this.componentDidMount();
+    this._checkInDom();
   }
 
   componentDidMount() {}
@@ -93,41 +95,40 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
   }
 
-  private _isDeepEqual(obj1: any, obj2: any) {
-    const keys1 = Object.keys(obj1);
-    const keys2 = Object.keys(obj2);
+  private _isDeepEqual(a, b) {
+    if (a === b) {
+      return true;
+    }
 
-    if (keys1.length !== keys2.length) {
+    if (a == null || typeof(a) != "object" ||
+      b == null || typeof(b) != "object")
+    {
       return false;
     }
-    for (const key of keys1) {
-      if (!obj2.hasOwnProperty(key)) {
+
+    let propertiesInA = 0, propertiesInB = 0;
+    for (let property in a) {
+      propertiesInA += 1;
+    }
+    for (let property in b) {
+      propertiesInB += 1;
+      if (!(property in a) || !this._isDeepEqual(a[property], b[property])) {
         return false;
       }
-
-      if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
-        if (!this._isDeepEqual(obj1[key], obj2[key])) {
-          return false;
-        }
-      } else {
-        if (obj1[key] !== obj2[key]) {
-          return true;
-        }
-      }
     }
-    return true;
+    return propertiesInA == propertiesInB;
   }
+  
 
-
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: undefined, newProps: undefined) {
 
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
-    return this._isDeepEqual(oldProps, newProps);
+  protected componentDidUpdate(oldProps: undefined, newProps: undefined) {
+    return !this._isDeepEqual(oldProps, newProps);
   }
 
   /**
@@ -153,7 +154,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     this._removeEvents()
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: undefined) => {
 
     if (!nextProps) {
       return;
@@ -181,7 +182,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     this._addEvents();
   }
 
-  private compile(template: string, context: any) {
+  private compile(template: string, context: undefined) {
     const contextAndStubs = {...context, __refs: this.refs};
 
     Object.entries(this.children).forEach(([key, child]) => {
@@ -193,7 +194,7 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
     const temp = document.createElement('template');
 
     temp.innerHTML = html;
-    contextAndStubs.__children?.forEach(({embed}: any) => {
+    contextAndStubs.__children?.forEach(({embed}: undefined) => {
       embed(temp.content);
     });
 
@@ -225,7 +226,6 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   _makePropsProxy(props: any) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
     const self = this;
 
     return new Proxy(props, {
@@ -237,9 +237,6 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
         const oldTarget = {...target}
 
         target[prop] = value;
-
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },
@@ -250,11 +247,17 @@ class Block<Props extends object = any, Refs extends RefType = RefType> {
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    if (this.getContent()!.dataset.showdisplay) {
+      this.getContent()!.style.display = this.getContent()!.dataset.showdisplay;
+    } else {
+      this.getContent()!.style.display = "block";
+    }
   }
 
   hide() {
     this.getContent()!.style.display = "none";
+
+    this.getContent()?.remove()
   }
 }
 

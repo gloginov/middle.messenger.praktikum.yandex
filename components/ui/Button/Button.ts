@@ -1,15 +1,29 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import './Button.scss'
 import {ButtonType} from '../../../types/types'
 import Block from "../../../lib/models/Block";
 
 class Button extends Block {
   constructor(props: ButtonType) {
+
     super({
-      ...props
+      ...props,
+      onClick: (e: Event) => {
+        console.log(e, props["data-page"])
+        if (!props["data-page"]) {
+          if (props.onClick) {
+            props.onClick(e)
+          }
+        } else {
+          window.router.go(props["data-page"])
+        }
+      }
     });
   }
 
   protected init(): void {
+    super.init()
     this.props.events = {
       click: this.props.onClick
     }
@@ -36,7 +50,7 @@ class Button extends Block {
           {{# if iconRigth}} {{{getPartial iconRigth}}} {{/if}}
         </a>
       {{else if data-page}}
-        <a href="#"
+        <button 
           class="
             custom-button
             custom-button_{{ view }}

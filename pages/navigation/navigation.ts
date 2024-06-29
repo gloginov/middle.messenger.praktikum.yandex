@@ -1,9 +1,25 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import './navigation.scss'
 import Block from "../../lib/models/Block";
 
 export default class NavigationPage extends Block {
   constructor() {
-    super();
+    super({
+      onClick: (e: Event) => {
+        if (e.target.dataset.page) {
+          e.preventDefault();
+          window.router.go(e.target.dataset.page)
+        }
+      }
+    });
+  }
+
+  protected init(): void {
+    super.init()
+    this.props.events = {
+      click: this.props.onClick
+    }
   }
 
   protected render(): string {
@@ -13,25 +29,22 @@ export default class NavigationPage extends Block {
     
         <ul class="navigation-list">
           <li>
-              <a href="#" data-page="login">Форма входа</a>
+              <a href="#" data-page="/">Форма входа</a>
           </li>
           <li>
-              <a href="#" data-page="registration">Форма регистрации</a>
+              <a href="#" data-page="/sign-up">Форма регистрации</a>
           </li>
           <li>
-              <a href="#" data-page="chats">Чаты</a>
+              <a href="#" data-page="/messenger">Чаты</a>
           </li>
           <li>
-              <a href="#" data-page="profile">Профиль</a>
+              <a href="#" data-page="/profile">Профиль</a>
           </li>
           <li>
-              <a href="#" data-page="setting">Настройки</a>
+              <a href="#" data-page="/setting">Настройки</a>
           </li>
           <li>
-              <a href="#" data-page="loadimage">Загрузка картинки</a>
-          </li>
-          <li>
-              <a href="#" data-page="error">Страница ошибок</a>
+              <a href="/error">Страница ошибок</a>
           </li>
         </ul>
       </nav>

@@ -1,10 +1,23 @@
-import Block from "../../../lib/models/Block";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import {validateEmail, validateName, validateLength, validatePhone, validateLogin} from "../../../helpers/validate";
 import {formToJson} from "../../../helpers/formToJson";
 import {Callback} from "../../../types/types";
+import isAuth from "../../../middleware/isAuth";
+import {authApi} from "../../../api/auth";
+import {userApi} from "../../../api/user";
 
-export default class ProfileSetting extends Block {
-  constructor(props: Callback) {
+type ProfileDataType = {
+  phone: string,
+  second_name: string,
+  first_name: string,
+  login: string,
+  email: string,
+  avatar: string,
+}
+
+export default class ProfileSetting extends isAuth {
+  constructor(props: Callback ) {
     super({
       ...props,
       validateEmail: validateEmail,
@@ -15,8 +28,22 @@ export default class ProfileSetting extends Block {
       onClick: (e: Event) => {
         e.preventDefault();
         if (e.target instanceof Element) {
-          console.log('Submit form, value:', formToJson(e.target));
+          userApi.updateUser(formToJson(e.target))
+            .then(({response}) => {
+              window.router.go('/profile')
+            })
+            .catch((error) => {
+              // window.router.go('error')
+              console.error(error.response)
+            })
         }
+      },
+      onClickBack: (e: Event) => {
+        e.preventDefault();
+        window.history.back()
+      },
+      profileData:{
+
       }
     });
   }
@@ -27,43 +54,50 @@ export default class ProfileSetting extends Block {
     }
   }
 
+  componentDidMount() {
+    super.componentDidMount();
+
+    authApi.getUser()
+      .then(({response}) => this.setProps({profileData: JSON.parse(response)}))
+      .catch((error) => {
+        // window.router.go('error')
+        console.error(error.response)
+      })
+  }
+
   protected render(): string {
+    const { profileData } = this.props;
+
     return `
       {{#> LayoutGrid}}
-        <div   class="profile">
+        <div class="profile">
           {{#*inline "leftContent" }}
             <div class="profile__back">
-              {{ Button iconLeft="Arrow" view="primary" form="round" className="profile__go-back" }}
+              {{ Button iconLeft="Arrow" view="primary" form="round" className="profile__go-back" onClick=onClickBack }}
             </div>
           {{/inline}}
     
           {{#*inline "rightContent" }}
             <div class="profile__content">
               <div class="profile-avatar">
-                <label for="">
-                  {{> Avatar avatar="https://i.pravatar.cc/300" width="130px" height="130px" }}
-                  <input type="file"  name="avatar">
-                  <span class="profile-avatar__upload">
-                    <span class="profile-avatar__upload-text">
-                      Upload image...
-                    </span>
-                  </span>
-                </label>
+                {{{ LoadAvatar avatar="${profileData.avatar}" }}}
               </div>
   
-              <form class="profile-info">
-                {{ TextFieldLabel label="Почта" type="text" value="ivanivanov@mm.rr" name="email" className="profile-info-field inline " validate=validateEmail}}
-                {{ TextFieldLabel label="Логин" type="text" value="ivanivanov" name="login" className="profile-info-field inline " validate=validateLogin}}
-                {{ TextFieldLabel label="Имя" type="text" value="Василий" name="first_name" className="profile-info-field inline " validate=validateName}}
-                {{ TextFieldLabel label="Фамилия" type="text" value="Пупкин" name="second_name" className="profile-info-field inline " validate=validateName}}
-                {{ TextFieldLabel label="Имя в чате" type="text" value="ivanivanov" name="display_name" className="profile-info-field inline " validate=validateLogin}}
-                {{ TextFieldLabel label="Телефон" type="tel" value="+7(999)999-99-99" name="phone" className="profile-info-field inline " validate=validatePhone}}
-  
-                <div class="profile-info__buttons">
-                  {{ Button text="Сохранить" view="primary" width="full" type="submit"}}
-                </div>
-  
-              </form>
+              {{#if profileData.email }}
+                <form class="profile-info">
+                  {{ TextFieldLabel label="Почта" type="text" value="${profileData?.email}" name="email" className="profile-info-field inline " validate=validateEmail}}
+                  {{ TextFieldLabel label="Логин" type="text" value="${profileData?.login}" name="login" className="profile-info-field inline " validate=validateLogin}}
+                  {{ TextFieldLabel label="Имя" type="text" value="${profileData?.first_name}" name="first_name" className="profile-info-field inline " validate=validateName}}
+                  {{ TextFieldLabel label="Фамилия" type="text" value="${profileData?.second_name}" name="second_name" className="profile-info-field inline " validate=validateName}}
+<!--                  {{ TextFieldLabel label="Имя в чате" type="text" value="ivanivanov" name="display_name" className="profile-info-field inline " validate=validateLogin}}-->
+                  {{ TextFieldLabel label="Телефон" type="tel" value="${profileData?.phone}" name="phone" className="profile-info-field inline " validate=validatePhone}}
+    
+                  <div class="profile-info__buttons">
+                    {{ Button text="Сохранить" view="primary" width="full" type="submit"}}
+                  </div>
+    
+                </form>
+              {{/if}}
             </div>
           {{/inline}}
         </div>

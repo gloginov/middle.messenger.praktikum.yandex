@@ -8,9 +8,13 @@ export default class LoginPage extends Block {
   protected render(): string {
     return `
       {{#> LayoutCentered}}
-        {{#> FormContainer }}
-          {{ FormLogin }}
-        {{/FormContainer}}
+        {{#*inline "centerContent"}}
+          {{#> FormContainer }}
+            {{#*inline "formContent"}}
+              {{ FormLogin }}
+            {{/inline}}
+          {{/FormContainer}}
+        {{/inline}}
       {{/LayoutCentered}}
     `
   }

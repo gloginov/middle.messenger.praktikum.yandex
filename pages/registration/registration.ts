@@ -8,10 +8,14 @@ export default class RegistrationPage extends Block {
   protected render(): string {
     return `
     {{#> LayoutCentered}}
-      {{#> FormContainer }}
-        {{ FormRegistration }}
-      {{/FormContainer}}
-    {{/LayoutCentered}}
+        {{#*inline "centerContent"}}
+          {{#> FormContainer }}
+            {{#*inline "formContent"}}
+              {{ FormRegistration }}
+            {{/inline}}
+          {{/FormContainer}}
+        {{/inline}}
+      {{/LayoutCentered}}
     `;
   }
 
