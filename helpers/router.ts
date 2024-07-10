@@ -1,10 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import Route from '../lib/Route';
+import Route from '../lib/Route.ts';
 
 class Router {
   private static __instance: undefined;
-  private routes: undefined[];
+  routes: undefined[];
   private history: History;
   private _currentRoute: null;
   private readonly _rootQuery: undefined;
@@ -63,6 +63,10 @@ class Router {
   go(pathname) {
     this.history.pushState({}, "", pathname);
     this._onRoute(pathname);
+  }
+
+  back() {
+    this.history.back();
   }
 
   getRoute(pathname) {

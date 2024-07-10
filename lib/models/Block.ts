@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import EventBus from "../EventBus";
+import EventBus from "../EventBus.ts";
 import {nanoid} from 'nanoid';
 import Handlebars from "handlebars";
 

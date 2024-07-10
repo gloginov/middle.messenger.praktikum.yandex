@@ -1,0 +1,9 @@
+{
+    "require": ["ts-node/register", "./mocha.setup.js"],
+    "exit": true,
+    "color": true,
+    "ignore": "node_modules",
+    "extension": ["ts", "js"],
+    "spec": "**/*.test.ts",
+    "loader": "ts-node/esm"
+}
