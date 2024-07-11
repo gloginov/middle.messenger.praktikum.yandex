@@ -13,6 +13,7 @@
     "lint:style": "npx stylelint \"**/*.scss\"",
     "fix:style": "npx stylelint --fix \"**/*.scss\"",
     "test": "mocha",
+    "prepare": "husky install",
     "pre-commit": "npm run lint:script && npm run lint:style && npm run test"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "mocha": "^10.6.0",
     "sass": "^1.72.0",
     "sinon": "^18.0.0",
+    "husky": "^8.0.3",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
     "stylelint-config-standard-scss": "^13.1.0",
