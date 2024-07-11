@@ -11,6 +11,7 @@ export default [
     "rules": {
       // note you must disable the base rule
       // as it can report incorrect errors
+      "no-undef": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": 0
     }
