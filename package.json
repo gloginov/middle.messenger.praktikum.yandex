@@ -13,7 +13,7 @@
     "lint:style": "npx stylelint \"**/*.scss\"",
     "fix:style": "npx stylelint --fix \"**/*.scss\"",
     "test": "mocha",
-    "prepare": "husky"
+    "pre-commit": "npm run lint:script && npm run lint:style && npm run test"
   },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
@@ -26,7 +26,6 @@
     "eslint": "^8.57.0",
     "globals": "^15.3.0",
     "handlebars": "^4.7.8",
-    "husky": "^9.0.11",
     "jsdom": "^24.1.0",
     "mocha": "^10.6.0",
     "sass": "^1.72.0",
