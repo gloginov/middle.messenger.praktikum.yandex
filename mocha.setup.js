@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+/* eslint-disable no-use-before-define */
 import { JSDOM } from 'jsdom';
 import Sinon from 'sinon';
 

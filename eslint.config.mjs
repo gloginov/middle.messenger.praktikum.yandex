@@ -7,7 +7,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    ignores: ["mocha.setup.js"],
+    ignores: ["./mocha.setup.js"],
     "rules": {
       // note you must disable the base rule
       // as it can report incorrect errors
