@@ -1,16 +1,5 @@
-// import {JSDOM} from 'jsdom'
-// import * as Components from './components';
-// import {requireJsComponent} from './lib/requireJsComponent';
-//
-// Object.entries(Components).forEach(([componentName, component]) => requireJsComponent(componentName, component))
-//
-// // jsdom
-// const jsdom = new JSDOM(`<body></body>`);
-//
-// global.window = jsdom.window;
-// global.document = jsdom.window.document;
-// global.Node = jsdom.window.Node;
-// global.MouseEvent = jsdom.window.MouseEvent;
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { JSDOM } from 'jsdom';
 import Sinon from 'sinon';
 
