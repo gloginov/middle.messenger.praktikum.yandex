@@ -2,18 +2,17 @@
   "ts-node": {
     "transpileOnly": true,
     "esm": true,
-    "moduleTypes": {
-      "**/*.ts": "cjs"
-    }
+    "files": true
   },
   "compilerOptions": {
     "outDir": "dist",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "target": "es2017",
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "declaration": false,
-    "module": "commonjs",
     "strictNullChecks": true,
     "sourceMap": true,
     "resolveJsonModule": true,

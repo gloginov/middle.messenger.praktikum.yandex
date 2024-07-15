@@ -7,9 +7,11 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
+    ignores: ["./mocha.setup.js"],
     "rules": {
       // note you must disable the base rule
       // as it can report incorrect errors
+      "no-undef": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": 0
     }

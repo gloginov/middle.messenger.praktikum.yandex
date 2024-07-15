@@ -21,7 +21,7 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 // type OptionsWithoutMethod = { data?: any };
 
 class HTTPTransport {
-  get(url: string, options?: { data: string | undefined }): Promise<XMLHttpRequest> {
+  get(url: string, options?: {}): Promise<XMLHttpRequest> {
     return this.request(url, {...options, method: METHOD.GET});
   };
 
